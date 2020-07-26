@@ -15,8 +15,9 @@ class Feedback extends CI_Controller
 	public function index()
 	{
 		check_not_login();
-		$data['row'] = $this->feedback_m->get()->result();
+		$data['row'] = $this->feedback_m->get($this->input->get('filter'))->result();
 		$this->template->load('template', 'feedback/index', $data);
+		
 	}
 
 	public function add()

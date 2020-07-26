@@ -45,7 +45,13 @@
 </tr>
 
 <?php $no = 1;
+    $jumlah = 0;
+    $count = 0;
 foreach ($body as $bdy) : ?>
+<?php
+    $jumlah = $jumlah + ($bdy->rateIndex+1);
+    $count = $count+1;
+?>
 <tr>
 <td style="text-align: center"><?= $no++; ?></td>
 <td style="text-align: center"><?= $bdy->nama_plgn; ?></td>
@@ -61,6 +67,10 @@ foreach ($body as $bdy) : ?>
 </td>
 </tr>
 <?php endforeach; ?>
+<tr>
+    <td colspan ='3' style="text-align: center">Rata-Rata</td>
+    <td class="text-center"><?= $jumlah/$count ?></td>
+</tr>
 </tbody>
 
 

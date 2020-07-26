@@ -194,6 +194,43 @@ class Laporan extends CI_Controller {
         redirect('laporan/penjualan/');
     }
 
+    public function generate_reservasi_periode()
+    {
+        $header = [
+            'id'            => null,
+            'no_doc'        => FormatNoTrans(reservasiAutoID(), '/PJ'),
+            'created_at'    => date('Y-m-d H:i:s', time()),
+            'created_by'    => $this->session->userdata('nama'),
+            'doc_type'      => 2
+        ];
+
+        $this->laporan_m->generateReservasi($header);
+
+        $param = [
+            'tgl_a'     => $this->input->post('tgl_a'),
+            'tgl_b'     => $this->input->post('tgl_b')
+        ];
+
+        $body = $this->laporan_m->getLastID()->row()->id;
+
+        $reservasi = $this->reservation_m->filter_reserve($param)->result();
+        // print_r($reservasi);
+        // die;
+        $data = array();
+
+        foreach($reservasi as $prd){ 
+            array_push($data, array(
+                'id'            => null,
+                'doc_id'        => $body,
+                'nama'          => $prd->nama,
+                'phone'         => $prd->phone,
+                'status'        => $prd->status
+            ));
+        }
+        $this->laporan_m->generate_reservasi($data);
+        redirect('laporan/reservasi/');
+    }
+
     // public function penjualan_print_filter()
     // {
     //     $param = [

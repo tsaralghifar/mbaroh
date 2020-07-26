@@ -4,11 +4,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Feedback_m extends CI_Model
 {
 
-    public function get($id = null)
+    public function get($rateIndex = null)
     {
         $this->db->from('feedback');
-        if ($id != null) {
-            $this->db->where('id', $id);
+        if ($rateIndex != null) {
+            $this->db->where('rateIndex', $rateIndex);
         }
         $query = $this->db->get();
         return $query;

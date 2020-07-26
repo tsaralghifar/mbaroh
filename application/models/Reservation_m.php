@@ -68,4 +68,20 @@ class Reservation_m extends CI_Model
         return $this->db->get('reservation');
     }
 
+    public function filter_reserve($param)
+    {
+        $this->db->where('booking_at >=', $param['tgl_a'] . ' 00:00:00');
+        $this->db->where('booking_at <=', $param['tgl_b'] . ' 23:59:59');
+        // $condition = "waktu_transaksi BETWEEN " . "'" . $param['tgl_a'] . "'" . " AND " . "'" . $param['tgl_b'] . "'";
+        // $this->db->select("waktu_transaksi BETWEEN". $param['tgl_a']. 'AND' . $param['tgl_b']);
+        // $this->db->where('waktu_transaksi',$condition);
+        // $this->db->select();
+        // $this->db->from('penjualan');
+        // $this->db->where(' waktu_transaksi >= date("'.$param['tgl_a'].'")');
+        // $this->db->where( 'waktu_transaksi <= date("'.$param['tgl_b'].'")');
+        // $this->db->where('DATE(waktu_transaksi) >=', date('Y-m-d',strtotime($param['tgl_a'])));
+        // $this->db->where('DATE(waktu_transaksi) <=', date('Y-m-d',strtotime($param['tgl_b'])));
+        return $this->db->get('reservation');
+    }
+
 }

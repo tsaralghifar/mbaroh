@@ -48,7 +48,7 @@
               <td><?= $data->nama_event ?></td>
               <td><?= $data->kegiatan ?></td>
               <td><img src="<?= base_url('uploads/event/') . $data->foto; ?> " alt="" height="80"></td>
-              <td><?= $data->status == 1 ? "Finished" : "Soon" ?></td>
+              <td><?= $data->status == 1 ? "<span class='label label-primary'>Finished</span>" : "<span class='label label-danger'>Soon</span>" ?></td>
               <td><?= $data->tgl ?></td>
               <td class="text-center" width="160px">
                 <?php if($data->foto != null) { ?>

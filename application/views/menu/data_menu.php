@@ -21,7 +21,10 @@
         <a href="<?= site_url('menu/add') ?>" class="btn btn-primary btn-flat">
           <i class="fa fa-plus"></i>Create
         </a>
-      </div>
+        <a href="<?= site_url('menu/print') ?>" class="btn btn-success btn-flat">
+          <i class="fa fa-print"></i>Print
+        </a>
+      </div>  
     </div>
 
     <div class="box-body table-responsive">
@@ -38,7 +41,7 @@
         </thead>
         <tbody>
           <?php $no = 1;
-          foreach ($row->result() as $key => $data) { ?>
+          foreach ($row as $key => $data) { ?>
             <tr>
               <td><?= $no++ ?></td>
               <td><?= $data->nama_menu ?></td>
@@ -46,7 +49,9 @@
               <td><?= $data->harga ?></td>
               <td><img src="<?= base_url('uploads/menu/') . $data->gambar; ?> " alt="" height="80"></td>
               <td class="text-center" width="160px">
+                <?php if($data->gambar != null) { ?>
                 <a href="<?= site_url('menu/edit/' . $data->menu_id) ?>" class="btn btn-primary btn-xs">
+                <?php } ?>
                   <i class="fa fa-pencil"></i>Edit
                 </a>
                 <a href="<?= site_url('menu/del/' . $data->menu_id) ?>" onclick="return confirm('Ingin Menghapus Data Ini?')" class="btn btn-danger btn-xs">

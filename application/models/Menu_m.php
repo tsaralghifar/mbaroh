@@ -22,29 +22,50 @@ class Menu_m extends CI_Model
         return $this->db->get();
     }
 
-    public function add($post)
+    // public function adds($post)
+    // {
+    //     $params = [
+    //         'nama_menu' => $post['nama_menu'],
+    //         'kategori_menu' => $post['kategori_menu'],
+    //         'harga' => $post['harga'],
+    //         'gambar' => $post['gambar']
+    //     ];
+    //     $this->db->insert('menu', $params);
+    // }
+
+    public function add($param)
     {
-        $params = [
-            'nama_menu' => $post['nama_menu'],
-            'kategori_menu' => $post['kategori_menu'],
-            'harga' => $post['harga'],
-            'gambar' => $post['gambar']
-        ];
-        $this->db->insert('menu', $params);
+        $this->db->insert('menu', $param);
     }
 
-    public function edit($post)
+    public function edit($param) // 
     {
-        $params = [
-            'nama_menu' => $post['nama_menu'],
-            'kategori_menu' => $post['kategori_menu'],
-            'harga' => $post['harga']
-        ];
-        if ($post['gambar'] != null) {
-            $params['gambar'] = $post['gambar'];
+        if ($param['gambar'] == null) {
+            $this->db->set('nama_menu', $param['nama_menu']);
+            $this->db->set('kategori_menu', $param['kategori_menu']);
+            $this->db->set('harga', $param['harga']);
+            $this->db->where('menu_id', $param['menu_id']);
+            $this->db->update('menu');
+        } else {
+            $this->db->set('nama_menu', $param['nama_menu']);
+            $this->db->set('kategori_menu', $param['kategori_menu']);
+            $this->db->set('harga', $param['harga']);
+            $this->db->set('gambar', $param['gambar']);
+            $this->db->where('menu_id', $param['menu_id']);
+            $this->db->update('menu');
         }
-        $this->db->where('menu_id', $post['id']);
-        $this->db->update('menu', $params);
+    }
+
+    public function nota_header()
+    {
+        $this->db->where('menu_id');
+        return $this->db->get('menu');
+    }
+
+    public function nota_line($data)
+    {
+        $this->db->where('menu_id');
+        return $this->db->get('menu');
     }
 
     public function del($id)

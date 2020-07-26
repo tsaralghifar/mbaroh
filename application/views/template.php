@@ -158,47 +158,40 @@
           <li>
             <a href="<?= site_url('dashboard') ?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
           </li>
+          <li>
+            <a href="<?= site_url('feedback') ?>"><i class="fa fa-commenting-o"></i><span>Kritik & Saran</span></a>
+          </li>
           <?php if ($this->session->userdata('level') == 1) { ?>
             <li>
-              <a href="<?= site_url('menu') ?>"><i class="fa fa-truck"></i><span>Menu</span></a>
+              <a href="<?= site_url('menu') ?>"><i class="fa fa-spoon"></i><span>Menu</span></a>
             </li>
             <li>
-              <a href=""><i class="fa fa-users"></i><span>Costumer</span></a>
+              <a href="<?= site_url('karyawan') ?>"><i class="fa fa-users"></i><span>Karyawan</span></a>
+            </li>
+            <li>
+              <a href="<?= site_url('fasilitas') ?>"><i class="fa fa-tags"></i><span>Fasilitas</span></a>
+            </li>
+            <li>
+              <a href="<?= site_url('kasir') ?>"><i class="fa fa-shopping-cart"></i><span>Kasir</span></a>
+            </li>
+            <li>
+              <a href="<?= site_url('event') ?>"><i class="fa fa-tasks"></i><span>Event</span></a>
+            </li>
+            <li>
+              <a href="<?= site_url('reservation') ?>"><i class="fa fa-check-square"></i><span>Reservation</span></a>
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-archive"></i><span>Product</span>
+                <i class="fa fa-pie-chart"></i><span>Rekap</span>
                 <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>Categories</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Unit</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Items</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-shopping-cart"></i><span>Transaction</span>
-                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>Sales</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Stock IN</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Stock OUT</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-pie-chart"></i><span>Report</span>
-                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>Sales</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Stocks</a></li>
+                <li><a href="<?= site_url('laporan/penjualan') ?>"><i class="fa fa-circle-o"></i>Penjualan</a></li>
+                <li><a href="<?= site_url('laporan/reservasi') ?>"><i class="fa fa-circle-o"></i>Booking</a></li>
               </ul>
             </li>
 
-            <li class="header">Setting</li>
+            <li class="header">LUL</li>
             <li><a href="<?= site_url('user') ?>"><i class="fa fa-user"></i><span>Users</span></a></li>
           <?php } ?>
         </ul>

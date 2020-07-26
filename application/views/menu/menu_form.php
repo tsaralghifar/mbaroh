@@ -11,7 +11,6 @@
 
 <!-- Main content -->
 <section class="content">
-
   <div class="box">
     <div class="box-header">
       <h3 class="box-title"><?= ucfirst($page) ?> Menu</h3>
@@ -25,38 +24,33 @@
     <div class="box-body">
       <div class="row">
         <div class="col-md-4 col-md-offset-4">
-          <?php echo form_open_multipart('menu/process'); ?>
+          <?php echo form_open_multipart('menu/add'); ?>
           <div class="form-group">
             <label>Nama Menu</label>
-            <input type="hidden" name="id" value="<?= $row->menu_id ?>">
-            <input type="text" name="nama_menu" value="<?= $row->nama_menu ?>" class="form-control" required>
+            <input type="hidden" name="id">
+            <input type="text" name="nama_menu" class="form-control" required>
           </div>
           <div class="form-group">
             <label>Kategori Menu</label>
             <select name="kategori_menu" class="form-control" required>
               <option value="">-Pilih-</option>
-              <option value="1" <?= $row->kategori_menu == 1 ? "selected" : null ?>>-Makanan-</option>
-              <option value="2" <?= $row->kategori_menu == 2 ? "selected" : null ?>>-Minuman-</option>
+              <option value="1">-Makanan-</option>
+              <option value="2">-Minuman-</option>
             </select>
           </div>
           <div class="form-group">
             <label>Harga</label>
-            <input type="number" name="harga" value="<?= $row->harga ?>" class="form-control" required>
+            <input type="number" name="harga" class="form-control" required>
           </div>
           <div class="form-group">
             <label>Gambar</label>
-            <?php if ($page == 'edit') {
-              if ($row->gambar != null) { ?>
-                <div>
+                <!-- <div>
                   <img src="<?= base_url('uploads/menu/' . $row->gambar) ?>" style="width:80px">
-                </div>
-              <?php
-              }
-            } ?>
+                </div> -->
             <input type="file" name="gambar" class="form-control">
           </div>
           <div class="form-group">
-            <button type="submit" name="<?= $page ?>" class="btn btn-success btn-flat">
+            <button type="submit" class="btn btn-success btn-flat">
               <i class="fa fa-paper-plane"></i>Save
             </button>
             <button type="reset" class="btn btn-flat">Reset</button>

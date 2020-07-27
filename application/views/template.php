@@ -169,7 +169,7 @@
               <a href="<?= site_url('karyawan') ?>"><i class="fa fa-users"></i><span>Karyawan</span></a>
             </li>
             <li>
-              <a href="<?= site_url('fasilitas') ?>"><i class="fa fa-tags"></i><span>Fasilitas</span></a>
+              <a href="<?= site_url('fasilitas') ?>"><i class="fa fa-tags"></i><span>Inventaris</span></a>
             </li>
             <li>
               <a href="<?= site_url('kasir') ?>"><i class="fa fa-shopping-cart"></i><span>Kasir</span></a>

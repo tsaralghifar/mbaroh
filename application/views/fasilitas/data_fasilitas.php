@@ -1,11 +1,11 @@
 <section class="content-header">
   <h1>
-    Menu
-    <small>Data Fasilitas</small>
+    Inventaris
+    <small>Data Inventaris</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> </a></li>
-    <li class="active">Fasilitas</li>
+    <li class="active">Inventaris</li>
   </ol>
 </section>
 
@@ -16,7 +16,7 @@
 
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Data fasilitas</h3>
+      <h3 class="box-title">Data Inventaris</h3>
       <div class="pull-right">
         <a href="<?= site_url('fasilitas/add') ?>" class="btn btn-primary btn-flat">
           <i class="fa fa-plus"></i>Create

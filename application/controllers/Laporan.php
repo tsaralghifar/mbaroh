@@ -92,7 +92,7 @@ class Laporan extends CI_Controller {
 
         $body = $this->laporan_m->getLastID()->row()->id;
 
-        $reservasi = $this->reservation_m->get()->result();
+        $reservasi = $this->reservation_m->geto()->result();
         $data = array();
 
         foreach($reservasi as $prd){ 

@@ -1,11 +1,11 @@
 <section class="content-header">
   <h1>
-    Menu
-    <small>Data Karyawan</small>
+    Booking/Reservasi
+    <small>Data Booking/Reservasi</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> </a></li>
-    <li class="active">Karyawan</li>
+    <li class="active">Booking/Reservasi</li>
   </ol>
 </section>
 
@@ -16,7 +16,7 @@
 
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Data Karyawan</h3>
+      <h3 class="box-title">Data Booking/Reservasi</h3>
       <div class="pull-right">
       <a href="<?= site_url('reservation/print_res') ?>" class="btn btn-success btn-flat">
           <i class="fa fa-print"></i>Print

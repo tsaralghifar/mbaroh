@@ -61,7 +61,9 @@ class Reservation extends CI_Controller
 			'page' => 'edit',
 			'row' => $reservation
 		];
-		$this->form_validation->set_rules('id', 'Bukti Transfer', 'required');
+        $this->form_validation->set_rules('id', 'Bukti Transfer', 'required');
+        $this->form_validation->set_rules('jumlah_tf', 'Jumlah', 'required');
+        $this->form_validation->set_rules('total_k', 'Total', 'required');
 	
 		if ($this->form_validation->run() == FALSE) {
 			$this->template->load('template', 'reservation/reservation_edit', $data);

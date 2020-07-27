@@ -10,8 +10,8 @@ class Reservation_m extends CI_Model
 
     public function geto()
     {
-        $this->db->where('booking_at >=', date('Y-m-d H:i:s', time()) . ' 00:00:00' .')');
-        $this->db->where('booking_at <=', date('Y-m-d H:i:s', time()) . ' 23:59:59' .')');
+        $this->db->where('booking_at >=', date('Y-m-d', time()) . ' 00:00:00' .')');
+        $this->db->where('booking_at <=', date('Y-m-d', time()) . ' 23:59:59' .')');
         return $this->db->get('reservation');
     }
 
@@ -41,9 +41,10 @@ class Reservation_m extends CI_Model
         if ($param['tf'] == null) {
             $this->db->update('reservation');
         } else {
-            $this->db->set('tf', $param['tf']);
             $this->db->set('jumlah_tf', $param['jumlah_tf']);
             $this->db->set('total_k', $param['total_k']);
+            $this->db->set('tf', $param['tf']);
+            
             $this->db->where('id', $param['id']);
 
             $this->db->update('reservation');

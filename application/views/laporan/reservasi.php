@@ -1,12 +1,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Penjualan
-        <small>Rekap Penjualan</small>
+    <h1>Data Booking/Reservasi
+        <small>Rekap Booking/Reservasi</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i></a></li>
-        <li>Rekap Transaksi</li>
-        <li class="active">Penjualan</li>
+        <li>Rekap Booking/Reservasi</li>
+        <li class="active">Booking/Reservasi</li>
     </ol>
 </section>
     <!-- /.content-header -->

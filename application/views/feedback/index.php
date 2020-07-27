@@ -22,6 +22,7 @@
       </div>
     </div>
 
+    <div class="box-header">
     <form action="" method="get">
     <select name="filter" id="filter">
       <option value="0" <?= $this->input->get('filter') == 0 ? 'selected' : '' ?>>Bintang 1</option>
@@ -30,9 +31,12 @@
       <option value="3" <?= $this->input->get('filter') == 3 ? 'selected' : '' ?>>Bintang 4</option>
       <option value="4" <?= $this->input->get('filter') == 4 ? 'selected' : '' ?>>Bintang 5</option>
     </select>
-    <button type="submit">Subhan</button>
+    <button type="submit">Submit</button>
     </form>
     <a href="<?= base_url('feedback') ?>" class="btn btn-primary">Reset</a>
+    </div>
+
+    
 
     <div class="box box-widget">
     <?php foreach($row as $key => $data) { ?>

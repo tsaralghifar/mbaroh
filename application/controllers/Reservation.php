@@ -62,8 +62,7 @@ class Reservation extends CI_Controller
 			'row' => $reservation
 		];
         $this->form_validation->set_rules('id', 'Bukti Transfer', 'required');
-        $this->form_validation->set_rules('jumlah_tf', 'Jumlah', 'required');
-        $this->form_validation->set_rules('total_k', 'Total', 'required');
+        $this->form_validation->set_rules('status_bayar', 'Status Bayar', 'required');
 	
 		if ($this->form_validation->run() == FALSE) {
 			$this->template->load('template', 'reservation/reservation_edit', $data);
@@ -97,9 +96,10 @@ class Reservation extends CI_Controller
 				$param = [
                     'id'            => $id,
                     'tf'			=> $image,
-                    'jumlah_tf'     => $this->input->post('jumlah_tf'),
-                    'total_k'       => $this->input->post('total_k')
-				];
+                    'status_bayar'  => $this->input->post('status_bayar')   
+                ];
+                var_dump($param);
+                die;
 				$this->reservation_m->edit($param);
 				$this->session->set_flashdata('message','HI THERE');
 				redirect('reservation');

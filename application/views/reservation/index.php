@@ -36,8 +36,6 @@
             <th>Booking Time</th>
             <th>Booking Pada</th>
             <th>Bukti Transfer</th>
-            <th>Jumlah Transfer</th>
-            <th>Total</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -54,9 +52,8 @@
               </td>
               <td><?= date("d m Y h:i a", strtotime($data->booking_at)); ?></td>
               <td><?= $data->tgl_h ?></td>
+              <td><?= $data->status_bayar == 1 ? "DP" : "LUNAS" ?></td>
               <td><img src="<?= base_url('uploads/reservation/') . $data->tf; ?> " alt="" height="80"></td>
-              <td><?= $data->jumlah_tf ?></td>
-              <td><?= $data->total_k ?></td>
               <td class="text-center">
                     <a href="<?= site_url('reservation/print/') . $data->id ?>" class="btn btn-primary btn-xs">
                     <i class="fa fa-print"></i>Print
@@ -65,7 +62,7 @@
                     <a href="<?= site_url('reservation/edit/' . $data->id) ?>" class="btn btn-primary btn-xs">
                     <i class="fa fa-pencil"></i>Edit
                     </a>
-                    <a href="<?= base_url('reservation/check/') . $data->id ?>" class="btn btn-warning btn-xs" id="tombol-baru"><i class="fa fa-check"></i></a>
+                    <a href="<?= base_url('reservation/check/') . $data->id ?>" class="btn btn-warning btn-xs" id="tombol-baru"><i class="fa fa-check">Proses</i></a>
                     <?php endif; ?> 
               </td>
             </tr>

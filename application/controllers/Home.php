@@ -13,4 +13,15 @@ class Home extends CI_Controller
         // die;
         $this->load->view('home', $data);
     }
+
+    public function print()
+    {
+        $this->load->model("menu_m");
+        $data = [
+            'body'      => $this->menu_m->get()->result(),
+            'title'     => 'Daftar Menu'
+        ];
+        $this->load->view('menuprint', $data);
+        
+    }
 }

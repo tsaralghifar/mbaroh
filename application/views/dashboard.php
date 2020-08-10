@@ -1,7 +1,7 @@
 <section class="content-header">
       <h1>
-        Blank page
-        <small>Control Panel</small>
+        Dashboard
+        <small>M'Baroh</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> </a></li>
@@ -12,7 +12,21 @@
     <!-- Main content -->
     <section class="content">
 
-        dashboard page
+        <div class="row">
+          <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>Penjualan</h3>
+
+                  <p>Penjualan Hari Ini</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-bag"></i>
+                </div>
+            </div>
+          </div>
+        </div>
 
       <!-- Default box -->
       <!-- <div class="row">

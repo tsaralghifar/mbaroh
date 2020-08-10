@@ -31,7 +31,7 @@
 </tr>
 
 <tr>
-<td><strong>HOLY PETSHOP</strong></td>
+<td><strong>Kopi M'Baroh</strong></td>
 <td>Alamat: <strong>JL. INDRAKILA KAMPUNG TIMUR NO 22 BALIKPAPAN</strong></td>
 </tr>
 </table>
@@ -45,18 +45,28 @@
 <th style="text-align: center">No</th>
 <th style="text-align: center">Nama Pelanggan</th>
 <th style="text-align: center">Phone</th>
-<th style="text-align: center">Status</th>
+<th style="text-align: center">Total</th>
 </tr>
 
 <?php $no = 1;
+      $jumlah = 0;
 foreach ($body as $bdy) : ?>
+<?php
+
+$jumlah = $jumlah + ($bdy->total_k);
+
+?>
 <tr>
 <td style="text-align: center"><?= $no++; ?></td>
 <td><?= $bdy->nama; ?></td>
 <td><?= $bdy->phone; ?></td>
-<td><?= $bdy->status ?></td>
+<td><?= $bdy->total_k ?></td>
 </tr>
 <?php endforeach; ?>
+<tr>
+    <td colspan ='3' style="text-align: center">Total Pembayaran</td>
+    <td class="text-align: center"><?= rupiah($jumlah); ?></td>
+</tr>
 </tbody>
 
 

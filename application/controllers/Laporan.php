@@ -101,7 +101,7 @@ class Laporan extends CI_Controller {
                 'doc_id'        => $body,
                 'nama'          => $prd->nama,
                 'phone'         => $prd->phone,
-                'status'        => $prd->status
+                'total_k'       => $prd->total_k
             ));
         }
         $this->laporan_m->generate_reservasi($data);
@@ -224,7 +224,7 @@ class Laporan extends CI_Controller {
                 'doc_id'        => $body,
                 'nama'          => $prd->nama,
                 'phone'         => $prd->phone,
-                'status'        => $prd->status
+                'total_k'       => $prd->total_k
             ));
         }
         $this->laporan_m->generate_reservasi($data);

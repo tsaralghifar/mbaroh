@@ -9,7 +9,7 @@ class Laporan_m Extends CI_Model
         if ($param !== null) {
             $this->db->where('id', $param);
         }
-        $this->db->order_by('id DESC');
+        $this->db->order_by('no_doc ASC');
         return $this->db->get('laporan');
     }
 

@@ -31,7 +31,7 @@
 </tr>
 
 <tr>
-<td><strong>HOLY PETSHOP</strong></td>
+<td><strong>Kopi M'Baroh</strong></td>
 <td>Alamat: <strong>JL. INDRAKILA KAMPUNG TIMUR NO 22 BALIKPAPAN</strong></td>
 </tr>
 </table>
@@ -48,13 +48,24 @@
 </tr>
 
 <?php $no = 1;
+      $jumlah = 0;
 foreach ($body as $bdy) : ?>
+<?php
+
+  $jumlah = $jumlah + ($bdy->total);
+
+?>
 <tr>
 <td style="text-align: center"><?= $no++; ?></td>
 <td><?= $bdy->faktur; ?></td>
 <td style="text-align: center"><?= rupiah($bdy->total); ?></td>
 </tr>
+
 <?php endforeach; ?>
+<tr>
+    <td colspan ='2' style="text-align: center">Total</td>
+    <td class="text-align: center"><?= rupiah($jumlah); ?></td>
+</tr>
 </tbody>
 
 

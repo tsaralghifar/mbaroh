@@ -185,6 +185,7 @@
                             <div class="col-sm">
                                 <div class="col-sm">
                                     <button type="submit" class="btn btn-primary">Booking now</button>
+                                    <a class="btn btn-dark" target="_blank" href="<?= site_url('home/print') ?>">Lihat Daftar Menu</a>
                                 </div>
                             </div>
                         </div>

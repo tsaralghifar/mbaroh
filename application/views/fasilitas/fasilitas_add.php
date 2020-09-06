@@ -1,11 +1,11 @@
 <section class="content-header">
   <h1>
-    Menu
-    <small>Data Menu</small>
+  Invetaris
+    <small>Data Invetaris</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> </a></li>
-    <li class="active">Menu</li>
+    <li class="active">Invetaris</li>
   </ol>
 </section>
 
@@ -14,7 +14,7 @@
 
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title"><?= ucfirst($page) ?> Menu</h3>
+      <h3 class="box-title"><?= ucfirst($page) ?> Invetaris</h3>
       <div class="pull-right">
         <a href="<?= site_url('fasilitas') ?>" class="btn btn-warning btn-flat">
           <i class="fa fa-undo"></i>Back
@@ -27,13 +27,18 @@
         <div class="col-md-4 col-md-offset-4">
           <?php echo form_open_multipart('fasilitas/add'); ?>
           <div class="form-group">
-            <label>Nama Menu</label>
+            <label>Nama Barang</label>
             <input type="hidden" name="id">
             <input type="text" name="nama_barang" class="form-control" required>
           </div>
           <div class="form-group">
-            <label>Tipe</label>
-            <input type="text" name="tipe_barang" class="form-control" required>
+            <label>Kategori</label>
+            <select class="form-control" id="kategori" name="kategori" required>
+                                <option value="">-- Pilih Produk --</option>
+                            <?php foreach ($kategori as $prod) : ?>
+                                <option value="<?= $prod->id; ?>"><?= $prod->nama_kategori; ?></option>
+                            <?php endforeach; ?>
+                        </select>
           </div>
           <div class="form-group">
             <label>Status</label>

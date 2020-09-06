@@ -33,9 +33,10 @@ class Laporan extends CI_Controller {
     public function reservasi_print()
     {
         $id = $this->input->post('id');
+        $status = [3, 2];
         $data = [
             'header'    => $this->laporan_m->get_reservasi($id)->row(),
-            'body'      => $this->laporan_m->detail_reservasi($id)->result(),
+            'body'      => $this->laporan_m->detail_reservasi($id, $status)->result(),
             'title'     => 'LAPORAN RESERVASI'
         ];
         // var_dump($data);
@@ -95,13 +96,20 @@ class Laporan extends CI_Controller {
         $reservasi = $this->reservation_m->geto()->result();
         $data = array();
 
+        // print_r($reservasi);
+        // die;
+
+        // var_dump($reservasi);
+        // die;
+
         foreach($reservasi as $prd){ 
             array_push($data, array(
                 'id'            => null,
                 'doc_id'        => $body,
                 'nama'          => $prd->nama,
                 'phone'         => $prd->phone,
-                'total_k'       => $prd->total_k
+                'total_k'       => $prd->total_k,
+                'status_bayar'  => $prd->status_bayar
             ));
         }
         $this->laporan_m->generate_reservasi($data);
@@ -155,6 +163,31 @@ class Laporan extends CI_Controller {
                 'reservasi' => $this->laporan_m->filter_reservasi($param)->result()
             ];
             $this->template->load('template', 'laporan/reservasi', $data);
+        }
+    }
+
+    public function pendapatan()
+    {
+        $data = [
+            'title'     => 'Laporan Reservasi',
+            'reservasi' => $this->laporan_m->get_pendapatan()->result()
+        ];
+        
+        $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
+        $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->template->load('template', 'laporan/pendapatan', $data);
+        } else {
+            $param = [
+                'tgl_awal'  => $this->input->post('tgl_awal') . ' 00:00:00',
+                'tgl_akhir' => $this->input->post('tgl_akhir') . ' 23:59:59'
+            ];
+            $data = [
+                'title'     => 'Laporan Reservasi',
+                'pendapatan' => $this->laporan_m->filter_pendapatan($param)->result()
+            ];
+            $this->template->load('template', 'laporan/pendapatan', $data);
         }
     }
 
@@ -224,7 +257,8 @@ class Laporan extends CI_Controller {
                 'doc_id'        => $body,
                 'nama'          => $prd->nama,
                 'phone'         => $prd->phone,
-                'total_k'       => $prd->total_k
+                'total_k'       => $prd->total_k,
+                'status_bayar'  => $prd->status_bayar
             ));
         }
         $this->laporan_m->generate_reservasi($data);

@@ -1,11 +1,11 @@
 <section class="content-header">
   <h1>
-    Booking/Reservasi
-    <small>Data Booking/Reservasi</small>
+    Kategori
+    <small>Data Kategori</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> </a></li>
-    <li class="active">Booking/Reservasi</li>
+    <li class="active">Kategori</li>
   </ol>
 </section>
 
@@ -16,11 +16,38 @@
 
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Data Booking/Reservasi</h3>
+      <h3 class="box-title">Data Kategori</h3>
       <div class="pull-right">
-      <a href="<?= site_url('reservation/print_res') ?>" class="btn btn-success btn-flat">
-          <i class="fa fa-print"></i>Print
-        </a>
+        <!-- modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#printModal">Add Unit</button>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="printModal" tabindex="-1" role="dialog" aria-labelledby="printLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="printLabel">Add Unit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                    <form action="<?= base_url('fasilitas/add_kategori'); ?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label class="col-sm-3">Nama Kategori</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="nama_kategori" name="nama_kategori">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+                    </form>
+            </div>
+          </div>
+        <!-- end modal -->
       </div>
     </div>
 
@@ -29,15 +56,7 @@
         <thead>
           <tr>
             <th>No</th>
-            <th>Nama</th>
-            <th>Phone</th>
-            <th>Jumlah Orang</th>
-            <th>Status</th>
-            <th>Booking Time</th>
-            <th>Booking Pada</th>
-            <th>Ket. Bayar</th>
-            <th>Jumlah Pembayaran</th>
-            <th>Bukti Transfer</th>
+            <th>Nama Kategori</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -46,27 +65,11 @@
           foreach ($row as $key => $data) { ?>
             <tr>
               <td><?= $no++ ?></td>
-              <td><?php xss($data->nama) ?></td>
-              <td><?php xss($data->phone) ?></td>
-              <td><?= $data->jumlah_orang ?></td>
-              <td>
-                <p class="btn-success-<?= $data->status_b == 'pending' ? 'danger' : 'success' ?>"><?= $data->status_b; ?></p>
-              </td>
-              <td><?= date("d m Y h:i a", strtotime($data->booking_at)); ?></td>
-              <td><?= $data->tgl_h ?></td>
-              <td><?= $data->status_bayar == 1 ? "--" : ($data->status_bayar == 2 ? "DP" : "LUNAS") ?></td>
-              <td><?= $data->total_k ?></td>
-              <td><img src="<?= base_url('uploads/reservation/') . $data->tf; ?> " alt="" height="80"></td>
-              <td class="text-center">
-                    <a href="<?= site_url('reservation/print/') . $data->id ?>" class="btn btn-primary btn-xs">
-                    <i class="fa fa-print"></i>Print
-                    </a>
-                    <?php if ($data->status_b == 'pending') : ?>
-                    <a href="<?= site_url('reservation/edit/' . $data->id) ?>" class="btn btn-primary btn-xs">
-                    <i class="fa fa-pencil"></i>Edit
-                    </a>
-                    <a href="<?= base_url('reservation/check/') . $data->id ?>" class="btn btn-warning btn-xs" id="tombol-baru"><i class="fa fa-check">Proses</i></a>
-                    <?php endif; ?> 
+              <td><?= $data->nama_kategori ?></td>
+              <td class="text-center" width="160px">
+                <a href="<?= site_url('fasilitas/kategori_edit/' . $data->id) ?>" class="btn btn-primary btn-xs">
+                  <i class="fa fa-pencil"></i>Edit
+                </a>
               </td>
             </tr>
           <?php } ?>

@@ -18,18 +18,17 @@
     <div class="page" style="font-size: 7pt">
     <table style="width: 100%;" class="header">
     <tr>
-    <td><p style="text-align: center; font-style: normal; font-family: Monaco; font-size: 20pt;">NOTA PENJUALAN</p></td>
+    <td><p style="text-align: center; font-style: normal; font-family: Monaco; font-size: 20pt;">NOTA BOOKING</p></td>
     </tr>
     </table>
     
     <table style="width: 100%; font-size: 12pt;">
     <tr>
-    <td>No. Struk: <?= $header->id; ?></td>
-    <td style="text-align: right;">Kasir: <?= $header->nama; ?></td>
+    
     </tr>
     
     <tr>
-    <td><img src="<?= base_url('uploads/reservation/') . $header->tf; ?> " alt="" height="250"></td>
+    
     </tr>
     
     <tr>
@@ -44,20 +43,18 @@
     
     <tbody>
     <tr>
-    <th style="border-bottom: 1px dotted;">No</th>
-    <th style="border-bottom: 1px dotted;">Menu</th style="border-bottom: 1px dotted;">
-    <th style="border-bottom: 1px dotted;">Jumlah</th style="border-bottom: 1px dotted;">
-    <th style="border-bottom: 1px dotted;">Harga</th style="border-bottom: 1px dotted;">
+    <th style="border-bottom: 1px dotted;">Nama</th style="border-bottom: 1px dotted;">
+    <th style="border-bottom: 1px dotted;">Jumlah Orang</th style="border-bottom: 1px dotted;">
+    <th style="border-bottom: 1px dotted;">Book Time</th style="border-bottom: 1px dotted;">
     <!-- <th style="border-bottom: 1px dotted;">Total</th style="border-bottom: 1px dotted;"> -->
     </tr>
     
     <?php $no = 1;
-    foreach ($body as $key) : ?>
+    foreach ($body as $bdy) : ?>
     <tr class="even_row">
-    <td style="text-align: center; "><?= $no++; ?></td>
-    <td style=""></td>
-    <td style="text-align: center; "></td>
-    <td style="text-align: right; "></td>
+    <td style="text-align: center; "><?= $bdy->nama ?></td>
+    <td style="text-align: center;"><?= $bdy->jumlah_orang ?></td>
+    <td style="text-align: center; "><?= $bdy->booking_at; ?></td>
     <!-- <td style="text-align: right; "><?= rupiah($key->harga * $key->sold_qty); ?></td> -->
     </tr>
     <?php endforeach; ?>
@@ -66,9 +63,7 @@
     
     </table>
     
-    <p style="text-align: right; font-size: 20px;">Total: </p>
-    <p style="text-align: right; font-size: 20px; margin-top: -15px; border-bottom: 1px dotted;">Bayar: </p>
-    <p style="text-align: right; font-size: 20px;">Kembali: </p>
+    <p style="text-align: right; font-size: 20px;">Jumlah Bayar:<br><?= rupiah($bdy->total_k); ?> </p>
     <br>
     <br>
     

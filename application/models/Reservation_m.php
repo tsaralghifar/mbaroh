@@ -40,11 +40,13 @@ class Reservation_m extends CI_Model
     {
         if ($param['tf'] == null) {
             $this->db->set('status_bayar', $param['status_bayar']);
+            $this->db->set('total_k', $param['total_k']);
             $this->db->where('id', $param['id']);
             $this->db->update('reservation');
         } else {
             $this->db->set('status_bayar', $param['status_bayar']);
             $this->db->set('tf', $param['tf']);
+            $this->db->set('total_k', $param['total_k']);
             $this->db->where('id', $param['id']);
 
             $this->db->update('reservation');

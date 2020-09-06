@@ -47,7 +47,8 @@ class Reservation extends CI_Controller
             'jumlah_orang'  => $this->input->post('jumlah_orang'),
             'status'        => 1,
             'booking_at'    => date('Y-m-d H:i:s', time()),
-            'tgl_h'         => $this->input->post('tgl_h')
+            'tgl_h'         => $this->input->post('tgl_h'),
+            'status_bayar'  => 1
         ];
         $this->reservation_m->booking($data);
         redirect(base_url());
@@ -91,15 +92,24 @@ class Reservation extends CI_Controller
 				}
 			}
 			if ($image == null) {
-				redirect('reservation/reservation_edit');
+				$param = [
+                    'id'            => $id,
+                    'status_bayar'  => $this->input->post('status_bayar'),   
+                    'tf'			=> NULL,
+                    'total_k'       => $this->input->post('total_k')
+                ];
+                $this->reservation_m->edit($param);
+				$this->session->set_flashdata('message','HI THERE');
+				redirect('reservation');
 			}else{
 				$param = [
                     'id'            => $id,
+                    'status_bayar'  => $this->input->post('status_bayar'),   
                     'tf'			=> $image,
-                    'status_bayar'  => $this->input->post('status_bayar')   
+                    'total_k'       => $this->input->post('total_k')
                 ];
-                var_dump($param);
-                die;
+                // var_dump($param);
+                // die;
 				$this->reservation_m->edit($param);
 				$this->session->set_flashdata('message','HI THERE');
 				redirect('reservation');

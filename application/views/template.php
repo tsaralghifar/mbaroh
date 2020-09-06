@@ -168,8 +168,16 @@
             <li>
               <a href="<?= site_url('karyawan') ?>"><i class="fa fa-users"></i><span>Karyawan</span></a>
             </li>
-            <li>
-              <a href="<?= site_url('fasilitas') ?>"><i class="fa fa-tags"></i><span>Inventaris</span></a>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-tags"></i><span>Master Inventaris</span>
+                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?= site_url('fasilitas') ?>"><i class="fa fa-circle-o"></i>Barang</a></li>
+                <li><a href="<?= site_url('fasilitas/barang_out') ?>"><i class="fa fa-circle-o"></i>Barang Keluar</a></li>
+                <li><a href="<?= site_url('fasilitas/kategori') ?>"><i class="fa fa-circle-o"></i>Kategori</a></li>
+              </ul>
             </li>
             <li>
               <a href="<?= site_url('kasir') ?>"><i class="fa fa-shopping-cart"></i><span>Kasir</span></a>
@@ -188,6 +196,7 @@
               <ul class="treeview-menu">
                 <li><a href="<?= site_url('laporan/penjualan') ?>"><i class="fa fa-circle-o"></i>Penjualan</a></li>
                 <li><a href="<?= site_url('laporan/reservasi') ?>"><i class="fa fa-circle-o"></i>Booking</a></li>
+                <li><a href="<?= site_url('laporan/pendapatan') ?>"><i class="fa fa-circle-o"></i>Pendapatan</a></li>
               </ul>
             </li>
 

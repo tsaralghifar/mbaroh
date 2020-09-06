@@ -13,23 +13,28 @@ class Fasilitas extends CI_Controller
 
 	public function index()
 	{
-		$data['row'] = $this->fasilitas_m->get()->result();
+		$data = [
+			'row'		=> $this->fasilitas_m->get()->result(),
+			'kategori'	=> $this->fasilitas_m->get_kategori()->result(),
+			'stok'      => $this->fasilitas_m->get_stock()->row()
+		]; 
 		$this->template->load('template', 'fasilitas/data_fasilitas', $data);
 	}
 
 	public function add(){
 		$fasilitas = new stdClass();
-		$fasilitas->id_barang = null;
+		$fasilitas->id = null;
 		$fasilitas->nama_barang = null;
-		$fasilitas->tipe_barang = null;
+		$fasilitas->kategori = null;
 		$fasilitas->status = null;
 		$fasilitas->foto_barang = null;
 		$data = [
 			'page' => 'add',
-			'row' => $fasilitas
+			'row' => $fasilitas,
+			'kategori' => $this->fasilitas_m->get_kategori()->result()
 		];
 		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required|trim');
-		$this->form_validation->set_rules('tipe_barang', 'Tipe', 'required|trim');
+		$this->form_validation->set_rules('kategori', 'Tipe', 'required|trim');
 		$this->form_validation->set_rules('status', 'Status Barang', 'required|trim');
         // $this->form_validation->set_rules('foto_barang', 'Foto Barang', 'required');
 		// $this->form_validation->set_rules('gambar', 'Gambar', 'required|trim');
@@ -64,9 +69,9 @@ class Fasilitas extends CI_Controller
 				redirect('fasilitas/fasilitas_add');
 			}else{
 				$param = [
-					'id_barang'			=> null,
+					'id'			=> null,
 					'nama_barang'		=> $this->input->post('nama_barang'),
-					'tipe_barang'		=> $this->input->post('tipe_barang'),
+					'kategori'			=> $this->input->post('kategori'),
 					'status'			=> $this->input->post('status'),
 					'foto_barang'		=> $image					
 				];
@@ -137,7 +142,7 @@ class Fasilitas extends CI_Controller
 						}
 					}
 					$param = [
-					'id_barang'			=> $id,
+					'id'			=> $id,
 					'nama_barang'		=> $this->input->post('nama_barang'),
 					'tipe_barang'		=> $this->input->post('tipe_barang'),
 					'status'			=> $this->input->post('status'),
@@ -152,6 +157,57 @@ class Fasilitas extends CI_Controller
 			}
 			
 		}
+	}
+
+	public function kategori()
+	{
+		$data = [
+			'row' 		=> $this->fasilitas_m->get_kategori()->result()
+		];
+		$this->template->load('template', 'fasilitas/kategori',$data);
+	}
+
+	public function add_kategori()
+	{
+		$param = [
+			'id'			 => null,
+			'nama_kategori'  => $this->input->post('nama_kategori')
+		];
+		$this->fasilitas_m->add_cat($param);
+		redirect('fasilitas/kategori');
+	}
+
+	function add_unit()
+    {
+		$id = $this->input->post('barang_stok');
+		// var_dump($id);
+		// die;
+        if ($id == null) {
+            redirect('fasilitas/');
+        } else {
+            $param = [
+                'id'            => $id,
+                'jumlah'        => $this->input->post('jumlah_unit'),
+				'barang'        => $this->fasilitas_m->get_barang($id)->row()->unit,
+				'created_by'    => $this->session->userdata('nama')
+			];
+			// var_dump($param);
+			// die;
+			$this->fasilitas_m->track_stock($param);
+            $this->fasilitas_m->stockin($param);
+            redirect('fasilitas/');
+        }
+	}
+	
+	public function barang_out()
+	{
+		$data = [
+			'row'				=> $this->fasilitas_m->get()->result(),
+			'kategori'			=> $this->fasilitas_m->get_kategori()->result(),
+			'stok'     		 	=> $this->fasilitas_m->get_stock()->row(),
+            'barangkeluar'      => $this->fasilitas_m->get_keluar()->result()
+        ];
+        $this->template->load('template','fasilitas/barang_out', $data);
 	}
 
 	public function print()

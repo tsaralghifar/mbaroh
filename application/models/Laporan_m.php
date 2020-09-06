@@ -23,6 +23,16 @@ class Laporan_m Extends CI_Model
         return $this->db->get('laporan');
     }
 
+    public function get_pendapatan($param = null)
+    {
+        $this->db->where('doc_type', 2);
+        if ($param !== null) {
+            $this->db->where('id', $param);
+        }
+        $this->db->order_by('created_at ASC');
+        return $this->db->get('laporan');
+    }
+
     public function getLastID()
     {
         $this->db->from('laporan');
@@ -73,10 +83,14 @@ class Laporan_m Extends CI_Model
         return $this->db->get('laporan_penjualan_detail');
     }
 
-    public function detail_reservasi($param)
+    public function detail_reservasi($param, $status)
     {
-        $this->db->where('status',2);
         $this->db->where('doc_id', $param);
+
+        // foreach ($status as $key) {
+            $this->db->where_in('status_bayar', $status);
+        // }
+
         return $this->db->get('laporan_reservasi_detail');
     }
 

@@ -1,7 +1,7 @@
 <section class="content-header">
   <h1>
     Inventaris
-    <small>Data Inventaris</small>
+    <small>Data Barang Keluar</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> </a></li>
@@ -16,30 +16,27 @@
 
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Data Inventaris</h3>
+      <h3 class="box-title">Data Barang Keluar</h3>
       <div class="pull-right">
-        <a href="<?= site_url('fasilitas/add') ?>" class="btn btn-primary btn-flat">
-          <i class="fa fa-plus"></i>Create
-        </a>
         <!-- modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#printModal">Add Unit</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#printModal">Barang Keluar</button>
           </div>
           <!-- Modal -->
           <div class="modal fade" id="printModal" tabindex="-1" role="dialog" aria-labelledby="printLabel" aria-hidden="true">
           <div class="modal-dialog">
               <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="printLabel">Add Unit</h5>
+                  <h5 class="modal-title" id="printLabel">Laporkan Barang Keluar</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                   </button>
               </div>
-                  <form action="<?= base_url('fasilitas/add_unit'); ?>" method="post">
+                  <form action="<?= base_url('fasilitas/barang_out'); ?>" method="post">
               <div class="modal-body">
                   <div class="form-group row">
                       <label class="col-sm-3">Barang</label>
                       <div class="col-sm-9">
-                        <select class="form-control select-produk" id="barang_stok" name="barang_stok" required>
+                        <select class="form-control select-produk" id="barang" name="barang" required>
                                   <option value="">-- Pilih Barang --</option>
                               <?php foreach ($row as $brg) : ?>
                                   <option value="<?= $brg->id; ?>"><?= $brg->nama_barang; ?></option>
@@ -49,9 +46,33 @@
                       </div>
                   </div>
                   <div class="form-group row">
+                      <label class="col-sm-3">Barang</label>
+                      <div class="col-sm-9">
+                        <select class="form-control select-produk" id="kategori" name="kategori" required>
+                                  <option value="">-- Pilih Kategori --</option>
+                              <?php foreach ($kategori as $brg) : ?>
+                                  <option value="<?= $brg->id; ?>"><?= $brg->nama_kategori; ?></option>
+                              <?php endforeach; ?>
+                        </select>
+                      <input type="hidden" name="brg_id" id="brg_id">
+                      </div>
+                  </div>
+                  <div class="form-group row">
                       <label class="col-sm-3">Jumlah</label>
                       <div class="col-sm-9">
                           <input type="number" class="form-control" id="jumlah_unit" name="jumlah_unit">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label class="col-sm-3">Tanggal Keluar</label>
+                      <div class="col-sm-9">
+                          <input type="date" class="form-control" id="tgl_keluar" name="tgl_keluar">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label class="col-sm-3">Keterangan</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" id="keterangan" name="keterangan">
                       </div>
                   </div>
               </div>
@@ -72,23 +93,24 @@
           <tr>
             <th>No</th>
             <th>Nama Barang</th>
-            <th>Tipe</th>
-            <th>Status</th>
-            <th>Unit</th>
+            <th>Kategori</th>
+            <th>Jumlah</th>
+            <th>Tanggal Keluar</th>
+            <th>Keterangan</th>
             <th>Foto</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <?php $no = 1;
-          foreach ($row as $key => $data) { ?>
+          foreach ($barangkeluar as $key => $data) { ?>
             <tr>
               <td><?= $no++ ?></td>
-              <td><?= $data->nama_barang ?></td>
-              <td><?= $data->nama_kategori ?></td>
-              <td><?= $data->status ?></td>
-              <td><?= $data->unit ?></td>
-              <td><img src="<?= base_url('uploads/fasilitas/') . $data->foto_barang; ?> " alt="" height="80"></td>
+              <td><?= $data->id_brg ?></td>
+              <td><?= $data->kategori ?></td>
+              <td><?= $data->jumlah ?></td>
+              <td><?= $data->tanggal_keluar ?></td>
+              <td><img src="<?= base_url('uploads/fasilitas/') . $data->foto; ?> " alt="" height="80"></td>
               <td class="text-center" width="160px">
                 <?php if($data->foto_barang != null) { ?>
                 <a href="<?= site_url('fasilitas/edit/' . $data->id) ?>" class="btn btn-primary btn-xs">

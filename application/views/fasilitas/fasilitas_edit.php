@@ -1,11 +1,11 @@
 <section class="content-header">
   <h1>
-    Menu
-    <small>Data Menu</small>
+    Inventaris
+    <small>Data Inventaris</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> </a></li>
-    <li class="active">Menu</li>
+    <li class="active">Invetaris</li>
   </ol>
 </section>
 
@@ -14,7 +14,7 @@
 
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title"><?= ucfirst($page) ?> Menu</h3>
+      <h3 class="box-title"><?= ucfirst($page) ?> Invetaris</h3>
       <div class="pull-right">
         <a href="<?= site_url('fasilitas') ?>" class="btn btn-warning btn-flat">
           <i class="fa fa-undo"></i>Back
@@ -34,7 +34,7 @@
           </div>
           <div class="form-group">
             <label>Tipe</label>
-            <input type="text" name="tipe_barang" class="form-control" required value="<?= $row->tipe_barang; ?>">
+            <input type="text" name="kategori" class="form-control" required value="<?= $row->kategori; ?>">
           </div>
           <div class="form-group">
             <label>Status</label>

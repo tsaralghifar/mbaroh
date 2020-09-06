@@ -137,8 +137,8 @@ class Event extends CI_Controller
 					}
 					$param = [
 					'id'			=> $id,
-					'nama_event'	=> $this->input->post('nama_menu'),
-					'kegiatan'		=> $this->input->post('kategori_menu'),
+					'nama_event'	=> $this->input->post('nama_event'),
+					'kegiatan'		=> $this->input->post('kegiatan'),
 					'foto'			=> $image,
 					'status'		=> $this->input->post('status'),
 					'tgl'			=> $this->input->post('tgl')

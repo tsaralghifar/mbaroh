@@ -31,9 +31,14 @@
             <label>Status Bayar</label>
             <select name="status_bayar" class="form-control" required>
               <option value="">-Pilih-</option>
-              <option value="1" <?= $data->status_bayar == "1" ? 'selected' : '' ?>>-DP-</option>
-              <option value="2" <?= $data->status_bayar == "2" ? 'selected' : '' ?>>-LUNAS-</option>
+              <option value="1" <?= $data->status_bayar == "1" ? 'selected' : '' ?>>-BELUM-</option>
+              <option value="2" <?= $data->status_bayar == "2" ? 'selected' : '' ?>>-DP-</option>
+              <option value="3" <?= $data->status_bayar == "3" ? 'selected' : '' ?>>-LUNAS-</option>
             </select>
+          </div>
+          <div class="form-group">
+            <label>Jumlah Pembayaran</label>
+            <input type="number" name="total_k" class="form-control" required value="<?= $data->total_k; ?>">
           </div>
           <div class="form-group">
             <label>Gambar</label>

@@ -134,8 +134,8 @@ class Karyawan extends CI_Controller
 					}
 					$param = [
 					'id_karyawan'		=> $id,
-					'nama_karyawan' 	=> $this->input->post('nama_barang'),
-					'alamat'		    => $this->input->post('tipe_barang'),
+					'nama_karyawan' 	=> $this->input->post('nama_karyawan'),
+					'alamat'		    => $this->input->post('alamat'),
 					'foto'		        => $image 
 					];
 					$this->karyawan_m->edit($param);

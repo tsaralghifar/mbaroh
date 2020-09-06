@@ -198,6 +198,29 @@ class Fasilitas extends CI_Controller
             redirect('fasilitas/');
         }
 	}
+
+	function barang_keluar()
+    {
+		$id = $this->input->post('barang_stok');
+		// var_dump($id);
+		// die;
+        if ($id == null) {
+            redirect('fasilitas/');
+        } else {
+            $param = [
+                'id'            => $id,
+				'jumlah'        => $this->input->post('jumlah_unit'),
+				'keterangan'	=> $this->input->post('keterangan'),
+				'barang'        => $this->fasilitas_m->get_barang($id)->row()->unit,
+				'created_by'    => $this->session->userdata('nama')
+			];
+			// var_dump($param);
+			// die;
+			$this->fasilitas_m->track_stock($param, "keluar");
+            $this->fasilitas_m->stockin($param, "keluar");
+            redirect('fasilitas/');
+        }
+	}
 	
 	public function barang_out()
 	{
@@ -208,6 +231,17 @@ class Fasilitas extends CI_Controller
             'barangkeluar'      => $this->fasilitas_m->get_keluar()->result()
         ];
         $this->template->load('template','fasilitas/barang_out', $data);
+	}
+
+	public function barang_masuk()
+	{
+		$data = [
+			'row'				=> $this->fasilitas_m->get()->result(),
+			'kategori'			=> $this->fasilitas_m->get_kategori()->result(),
+			'stok'     		 	=> $this->fasilitas_m->get_stock()->row(),
+            'barangmasuk'      => $this->fasilitas_m->get_masuk()->result()
+        ];
+        $this->template->load('template','fasilitas/barang_masuk', $data);
 	}
 
 	public function print()

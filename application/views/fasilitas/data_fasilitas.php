@@ -22,7 +22,8 @@
           <i class="fa fa-plus"></i>Create
         </a>
         <!-- modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#printModal">Add Unit</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#printModal">Barang Masuk</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#printKeluar">Barang Keluar</button>
           </div>
           <!-- Modal -->
           <div class="modal fade" id="printModal" tabindex="-1" role="dialog" aria-labelledby="printLabel" aria-hidden="true">
@@ -62,9 +63,54 @@
                   </form>
               </div>
           </div>
+          </div>
+          <div class="modal fade" id="printKeluar" tabindex="-1" role="dialog" aria-labelledby="printKeluar" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="printLabel">Barang Keluar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('fasilitas/barang_keluar'); ?>" method="post">
+                <div class="modal-body">
+                  <div class="form-group row">
+                      <label class="col-sm-3">Barang</label>
+                      <div class="col-sm-9">
+                        <select class="form-control select-produk" id="barang_stok" name="barang_stok" required>
+                                  <option value="">-- Pilih Barang --</option>
+                              <?php foreach ($row as $brg) : ?>
+                                  <option value="<?= $brg->id; ?>"><?= $brg->nama_barang; ?></option>
+                              <?php endforeach; ?>
+                        </select>
+                      <input type="hidden" name="brg_id" id="brg_id">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label class="col-sm-3">Jumlah</label>
+                      <div class="col-sm-9">
+                          <input type="number" class="form-control" id="jumlah_unit" name="jumlah_unit">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label class="col-sm-3">Keterangan</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" id="keterangan" name="keterangan">
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+                </form>
+              </div>
+          </div>
+          </div>
         <!-- end modal -->
       </div>
-    </div>
+    
 
     <div class="box-body table-responsive">
       <table class="table table-bordered table-striped" id="table1">

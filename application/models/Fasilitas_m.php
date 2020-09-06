@@ -55,7 +55,17 @@ class Fasilitas_m extends CI_Model
     public function get_keluar()
     {
         $this->db->from('barang_keluar');
-        $this->db->order_by('id DESC');
+        $this->db->join('fasilitas','fasilitas.id = barang_keluar.id_brg');
+        $this->db->order_by('barang_keluar.id DESC');
+        $this->db->limit(6);
+        return $this->db->get();
+    }
+
+    public function get_masuk()
+    {
+        $this->db->from('barang_masuk');
+        $this->db->join('fasilitas','fasilitas.id = barang_masuk.id_brg');
+        $this->db->order_by('barang_masuk.id DESC');
         $this->db->limit(6);
         return $this->db->get();
     }
@@ -65,15 +75,25 @@ class Fasilitas_m extends CI_Model
         return $this->db->query("SELECT unit FROM fasilitas ORDER BY id DESC LIMIT 1");
     }
 
-    public function stockin($param)
+    public function stockin($param, $type = "masuk")
     {
-        $this->db->set('unit', $param['barang'] + $param['jumlah']);
+        if ($type == "keluar") {
+            if ($param['barang'] - $param['jumlah'] < 0) {
+                return;
+            }
+            $this->db->set('unit', $param['barang'] - $param['jumlah']);
+        }else{
+            $this->db->set('unit', $param['barang'] + $param['jumlah']);
+        }
         $this->db->where('id', $param['id']);
         $this->db->update('fasilitas');
     }
 
-    public function track_stock($param)
+    public function track_stock($param, $type = "masuk")
     {
+        if ($param['barang'] - $param['jumlah'] < 0) {
+            return;
+        }
         $data = [
             'id'            => null,
             'id_brg'        => $param['id'],
@@ -81,6 +101,11 @@ class Fasilitas_m extends CI_Model
             'tanggal'       => date('Y-m-d H:i:s', time()),
             'created_by'    => $param['created_by']
         ];
+        if ($type == "keluar") {
+            $data['keterangan'] = $param['keterangan'];
+            $this->db->insert('barang_keluar', $data);
+            return;
+        }
         $this->db->insert('barang_masuk', $data);
     }
 

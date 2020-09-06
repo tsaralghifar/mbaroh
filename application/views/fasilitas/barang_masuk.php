@@ -29,18 +29,16 @@
             <th>No</th>
             <th>Nama Barang</th>
             <th>Jumlah</th>
-            <th>Keterangan</th>
             <th>Tanggal Keluar</th>
           </tr>
         </thead>
         <tbody>
           <?php $no = 1;
-          foreach ($barangkeluar as $key => $data) { ?>
+          foreach ($barangmasuk as $key => $data) { ?>
             <tr>
               <td><?= $no++ ?></td>
               <td><?= $data->nama_barang ?></td>
               <td><?= $data->jumlah ?></td>
-              <td><?= $data->keterangan ?></td>
               <td><?= $data->tanggal ?></td>
               
             </tr>

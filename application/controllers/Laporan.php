@@ -9,6 +9,7 @@ class Laporan extends CI_Controller {
 		check_not_login();
 		$this->load->model('menu_m');
         $this->load->model('kasir_m');
+        $this->load->model('fasilitas_m');
         $this->load->model('laporan_m');
         $this->load->model('reservation_m');
         $this->load->library('pdf');
@@ -116,6 +117,37 @@ class Laporan extends CI_Controller {
         redirect('laporan/reservasi/');
     }
 
+    public function generate_barang()
+    {
+        $header = [
+            'id'            => null,
+            'no_doc'        => FormatNoTrans(penjualanAutoID(), '/PJ'),
+            'created_at'    => date('Y-m-d H:i:s', time()),
+            'created_by'    => $this->session->userdata('nama'),
+            'doc_type'      => 4
+        ];
+
+        $this->laporan_m->generateBarang($header);
+
+        $body = $this->laporan_m->getLastID()->row()->id;
+
+        $barang = $this->fasilitas_m->get()->result();
+        $data = array();
+
+        foreach($barang as $brg){ 
+            array_push($data, array(
+                'id'            => null,
+                'doc_id'        => $body,
+                'nama_barang'   => $brg->nama_barang,
+                'kategori'      => $brg->nama_kategori,
+                'unit'          => $brg->unit,
+                'status'        => $brg->status
+            ));
+        }
+        $this->laporan_m->generate_barang($data);
+        redirect('laporan/barang/');
+    }
+
     public function penjualan()
     {
         $data = [
@@ -188,6 +220,31 @@ class Laporan extends CI_Controller {
                 'pendapatan' => $this->laporan_m->filter_pendapatan($param)->result()
             ];
             $this->template->load('template', 'laporan/pendapatan', $data);
+        }
+    }
+
+    public function barang()
+    {
+        $data = [
+            'title'     => 'Laporan Barang',
+            'barang'    => $this->laporan_m->get_barang()->result()
+        ];
+        
+        $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
+        $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->template->load('template', 'laporan/barang', $data);
+        } else {
+            $param = [
+                'tgl_awal'  => $this->input->post('tgl_awal') . ' 00:00:00',
+                'tgl_akhir' => $this->input->post('tgl_akhir') . ' 23:59:59'
+            ];
+            $data = [
+                'title'     => 'Laporan Reservasi',
+                'barang'    => $this->laporan_m->filter_barang($param)->result()
+            ];
+            $this->template->load('template', 'laporan/barang', $data);
         }
     }
 

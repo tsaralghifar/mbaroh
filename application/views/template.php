@@ -175,6 +175,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="<?= site_url('fasilitas') ?>"><i class="fa fa-circle-o"></i>Barang</a></li>
+                <li><a href="<?= site_url('fasilitas/barang_masuk') ?>"><i class="fa fa-circle-o"></i>Barang Masuk</a></li>
                 <li><a href="<?= site_url('fasilitas/barang_out') ?>"><i class="fa fa-circle-o"></i>Barang Keluar</a></li>
                 <li><a href="<?= site_url('fasilitas/kategori') ?>"><i class="fa fa-circle-o"></i>Kategori</a></li>
               </ul>
@@ -190,13 +191,24 @@
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-pie-chart"></i><span>Rekap</span>
+                <i class="fa fa-pie-chart"></i><span>Rekap Pendapatan</span>
                 <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
               </a>
               <ul class="treeview-menu">
                 <li><a href="<?= site_url('laporan/penjualan') ?>"><i class="fa fa-circle-o"></i>Penjualan</a></li>
                 <li><a href="<?= site_url('laporan/reservasi') ?>"><i class="fa fa-circle-o"></i>Booking</a></li>
                 <li><a href="<?= site_url('laporan/pendapatan') ?>"><i class="fa fa-circle-o"></i>Pendapatan</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-pie-chart"></i><span>Rekap Inventaris</span>
+                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?= site_url('laporan/barang') ?>"><i class="fa fa-circle-o"></i>Barang</a></li>
+                <li><a href="<?= site_url('laporan/barang_masuk') ?>"><i class="fa fa-circle-o"></i>Barang Masuk</a></li>
+                <li><a href="<?= site_url('laporan/barang_keluar') ?>"><i class="fa fa-circle-o"></i>Barang Keluar</a></li>
               </ul>
             </li>
 

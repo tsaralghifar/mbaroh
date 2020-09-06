@@ -43,6 +43,26 @@ class Laporan_m Extends CI_Model
         return $this->db->get('laporan');
     }
 
+    public function get_barang_masuk($param = null)
+    {
+        $this->db->where('doc_type', 5);
+        if ($param !== null) {
+            $this->db->where('id', $param);
+        }
+        $this->db->order_by('created_at ASC');
+        return $this->db->get('laporan');
+    }
+
+    public function get_barang_keluar($param = null)
+    {
+        $this->db->where('doc_type', 6);
+        if ($param !== null) {
+            $this->db->where('id', $param);
+        }
+        $this->db->order_by('created_at ASC');
+        return $this->db->get('laporan');
+    }
+
     public function getLastID()
     {
         $this->db->from('laporan');
@@ -66,6 +86,16 @@ class Laporan_m Extends CI_Model
         $this->db->insert_batch('laporan_barang_detail', $data);
     }
 
+    public function generate_barang_masuk($data)
+    {
+        $this->db->insert_batch('laporan_barangmasuk_detail', $data);
+    }
+
+    public function generate_barang_keluar($data)
+    {
+        $this->db->insert_batch('laporan_barangkeluar_detail', $data);
+    }
+
     public function generatePenjualan($param)
     {
         $this->db->insert('laporan', $param);
@@ -77,6 +107,16 @@ class Laporan_m Extends CI_Model
     }
 
     public function generateBarang($param)
+    {
+        $this->db->insert('laporan', $param);
+    }
+
+    public function generateBarangMasuk($param)
+    {
+        $this->db->insert('laporan', $param);
+    }
+
+    public function generateBarangKeluar($param)
     {
         $this->db->insert('laporan', $param);
     }
@@ -105,6 +145,22 @@ class Laporan_m Extends CI_Model
         return $this->db->get('laporan');
     }
 
+    public function filter_barang_masuk($param)
+    {
+        $this->db->where('doc_type', 5);
+        $this->db->where('created_at >=', $param['tgl_awal']);
+        $this->db->where('created_at <=', $param['tgl_akhir']);
+        return $this->db->get('laporan');
+    }
+
+    public function filter_barang_keluar($param)
+    {
+        $this->db->where('doc_type', 6);
+        $this->db->where('created_at >=', $param['tgl_awal']);
+        $this->db->where('created_at <=', $param['tgl_akhir']);
+        return $this->db->get('laporan');
+    }
+
     public function detail_penjualan($param)
     {
         $this->db->where('doc_id', $param);
@@ -126,6 +182,18 @@ class Laporan_m Extends CI_Model
     {
         $this->db->where('doc_id', $param);
         return $this->db->get('laporan_barang_detail');
+    }
+
+    public function detail_barang_masuk($param)
+    {
+        $this->db->where('doc_id', $param);
+        return $this->db->get('laporan_barangmasuk_detail');
+    }
+
+    public function detail_barang_keluar($param)
+    {
+        $this->db->where('doc_id', $param);
+        return $this->db->get('laporan_barangkeluar_detail');
     }
 
     // public function filter_cetak_penjualan($param)

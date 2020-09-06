@@ -148,6 +148,67 @@ class Laporan extends CI_Controller {
         redirect('laporan/barang/');
     }
 
+    public function generate_barang_masuk()
+    {
+        $header = [
+            'id'            => null,
+            'no_doc'        => FormatNoTrans(penjualanAutoID(), '/PJ'),
+            'created_at'    => date('Y-m-d H:i:s', time()),
+            'created_by'    => $this->session->userdata('nama'),
+            'doc_type'      => 5
+        ];
+
+        $this->laporan_m->generateBarangMasuk($header);
+
+        $body = $this->laporan_m->getLastID()->row()->id;
+
+        $barang = $this->fasilitas_m->get_masuk()->result();
+        $data = array();
+
+        foreach($barang as $brg){ 
+            array_push($data, array(
+                'id'            => null,
+                'doc_id'        => $body,
+                'nama_barang'   => $brg->nama_barang,
+                'jumlah'        => $brg->jumlah,
+                'tanggal'       => $brg->tanggal
+            ));
+        }
+        $this->laporan_m->generate_barang_masuk($data);
+        redirect('laporan/barang/');
+    }
+
+    public function generate_barang_keluar()
+    {
+        $header = [
+            'id'            => null,
+            'no_doc'        => FormatNoTrans(penjualanAutoID(), '/PJ'),
+            'created_at'    => date('Y-m-d H:i:s', time()),
+            'created_by'    => $this->session->userdata('nama'),
+            'doc_type'      => 6
+        ];
+
+        $this->laporan_m->generateBarangKeluar($header);
+
+        $body = $this->laporan_m->getLastID()->row()->id;
+
+        $barang = $this->fasilitas_m->get_keluar()->result();
+        $data = array();
+
+        foreach($barang as $brg){ 
+            array_push($data, array(
+                'id'            => null,
+                'doc_id'        => $body,
+                'nama_barang'   => $brg->nama_barang,
+                'jumlah'        => $brg->jumlah,
+                'keterangan'    => $brg->keterangan,
+                'tanggal'       => $brg->tanggal
+            ));
+        }
+        $this->laporan_m->generate_barang_keluar($data);
+        redirect('laporan/barang_keluar/');
+    }
+
     public function penjualan()
     {
         $data = [
@@ -245,6 +306,56 @@ class Laporan extends CI_Controller {
                 'barang'    => $this->laporan_m->filter_barang($param)->result()
             ];
             $this->template->load('template', 'laporan/barang', $data);
+        }
+    }
+
+    public function barang_masuk()
+    {
+        $data = [
+            'title'     => 'Laporan Barang Masuk',
+            'barang'    => $this->laporan_m->get_barang_masuk()->result()
+        ];
+        
+        $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
+        $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->template->load('template', 'laporan/barang_masuk', $data);
+        } else {
+            $param = [
+                'tgl_awal'  => $this->input->post('tgl_awal') . ' 00:00:00',
+                'tgl_akhir' => $this->input->post('tgl_akhir') . ' 23:59:59'
+            ];
+            $data = [
+                'title'     => 'Laporan Barang Masuk',
+                'barang'    => $this->laporan_m->filter_barang_masuk($param)->result()
+            ];
+            $this->template->load('template', 'laporan/barang_masuk', $data);
+        }
+    }
+
+    public function barang_keluar()
+    {
+        $data = [
+            'title'     => 'Laporan Barang Keluar',
+            'barang'    => $this->laporan_m->get_barang_keluar()->result()
+        ];
+        
+        $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
+        $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->template->load('template', 'laporan/barang_keluar', $data);
+        } else {
+            $param = [
+                'tgl_awal'  => $this->input->post('tgl_awal') . ' 00:00:00',
+                'tgl_akhir' => $this->input->post('tgl_akhir') . ' 23:59:59'
+            ];
+            $data = [
+                'title'     => 'Laporan Barang Keluar',
+                'barang'    => $this->laporan_m->filter_barang_keluar($param)->result()
+            ];
+            $this->template->load('template', 'laporan/barang_keluar', $data);
         }
     }
 

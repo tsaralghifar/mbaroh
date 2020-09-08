@@ -1,35 +1,48 @@
 <section class="content-header">
-      <h1>
-        Dashboard
-        <small>M'Baroh</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> </a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
+  <h1>
+    Dashboard
+    <small>M'Baroh</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> </a></li>
+    <li class="active">Dashboard</li>
+  </ol>
+</section>
 
-    <!-- Main content -->
-    <section class="content">
+<!-- Main content -->
+<section class="content">
 
-        <div class="row">
-          <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-            <div class="small-box bg-aqua">
-                <div class="inner">
-                  <h3>Penjualan</h3>
+  <div class="row">
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3>Penjualan</h3>
 
-                  <p>Penjualan Hari Ini</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-            </div>
-          </div>
+          <p>Penjualan Hari Ini</p>
         </div>
+        <div class="icon">
+          <i class="ion ion-bag"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <!-- Default box -->
-      <!-- <div class="row">
+  <div class="row">
+    <div class="col-lg-6 col-xs-6">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Chart Omset</h3>
+        </div>
+        <div class="box-body">
+          <canvas id="chartOmset" height="250"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Default box -->
+  <!-- <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="fa fa-th"></i></span>
@@ -70,12 +83,8 @@
             </div>
           </div>
         </div>
-      </div>
-        
-        <!-- /.box-body -->
-        
-        <!-- /.box-footer-->
       </div> -->
-      <!-- /.box -->
+  </div>
+  <!-- /.box -->
 
-    </section>
+</section>

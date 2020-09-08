@@ -75,7 +75,7 @@
                                     <td><?= $pj->created_by; ?></td>
                                     <td>
                                         <div class="text-center" width="160px">
-                                            <form action="<?= base_url('laporan/penjualan_print/'); ?>" method="post">
+                                            <form action="<?= base_url('laporan/barang_print/'); ?>" method="post">
                                                 <input type="hidden" value="<?= $pj->id; ?>" name="id">
                                                 <input type="hidden" value="pdf" name="tipe">
                                                 <button class="btn btn-success btn-sm" type="submit" value="pdf" name="gen"><i class="fa fa-download"></i></button>

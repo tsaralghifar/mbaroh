@@ -1,7 +1,7 @@
 <section class="content-header">
   <h1>
     Inventaris
-    <small>Data Barang Keluar</small>
+    <small>Data Barang Masuk</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> </a></li>
@@ -16,7 +16,7 @@
 
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Data Barang Keluar</h3>
+      <h3 class="box-title">Data Barang Masuk</h3>
       <div class="pull-right">
         
       </div>
@@ -29,7 +29,7 @@
             <th>No</th>
             <th>Nama Barang</th>
             <th>Jumlah</th>
-            <th>Tanggal Keluar</th>
+            <th>Tanggal Masuk</th>
           </tr>
         </thead>
         <tbody>

@@ -51,6 +51,54 @@ class Laporan extends CI_Controller {
         // $this->load->view('laporan/print_reservasi', $data);
     }
 
+    public function barang_print()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'header'    => $this->laporan_m->get_barang($id)->row(),
+            'body'      => $this->laporan_m->detail_barang($id)->result(),
+            'title'     => 'LAPORAN BARANG'
+        ];
+        
+        $this->load->library('pdf');
+        
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = preg_replace("([/])", '-', $data['header']->no_doc);
+        $this->pdf->load_view('laporan/print_barang', $data);
+    }
+
+    public function barang_masuk_print()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'header'    => $this->laporan_m->get_barang_masuk($id)->row(),
+            'body'      => $this->laporan_m->detail_barang_masuk($id)->result(),
+            'title'     => 'LAPORAN BARANG MASUK'
+        ];
+        
+        $this->load->library('pdf');
+        
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = preg_replace("([/])", '-', $data['header']->no_doc);
+        $this->pdf->load_view('laporan/print_barang_masuk', $data);
+    }
+
+    public function barang_keluar_print()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'header'    => $this->laporan_m->get_barang_keluar($id)->row(),
+            'body'      => $this->laporan_m->detail_barang_keluar($id)->result(),
+            'title'     => 'LAPORAN BARANG KELUAR'
+        ];
+        
+        $this->load->library('pdf');
+        
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = preg_replace("([/])", '-', $data['header']->no_doc);
+        $this->pdf->load_view('laporan/print_barang_keluar', $data);
+    }
+
     public function generate_penjualan()
     {
         $header = [

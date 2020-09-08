@@ -94,6 +94,7 @@ class Fasilitas_m extends CI_Model
         if ($param['barang'] - $param['jumlah'] < 0) {
             return;
         }
+
         $data = [
             'id'            => null,
             'id_brg'        => $param['id'],
@@ -101,12 +102,15 @@ class Fasilitas_m extends CI_Model
             'tanggal'       => date('Y-m-d H:i:s', time()),
             'created_by'    => $param['created_by']
         ];
+
         if ($type == "keluar") {
             $data['keterangan'] = $param['keterangan'];
             $this->db->insert('barang_keluar', $data);
             return;
         }
+
         $this->db->insert('barang_masuk', $data);
+        return;
     }
 
     // public function adds($post)

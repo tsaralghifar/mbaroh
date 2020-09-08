@@ -180,8 +180,7 @@ class Fasilitas extends CI_Controller
 	function add_unit()
     {
 		$id = $this->input->post('barang_stok');
-		// var_dump($id);
-		// die;
+
         if ($id == null) {
             redirect('fasilitas/');
         } else {
@@ -191,8 +190,7 @@ class Fasilitas extends CI_Controller
 				'barang'        => $this->fasilitas_m->get_barang($id)->row()->unit,
 				'created_by'    => $this->session->userdata('nama')
 			];
-			// var_dump($param);
-			// die;
+
 			$this->fasilitas_m->track_stock($param);
             $this->fasilitas_m->stockin($param);
             redirect('fasilitas/');

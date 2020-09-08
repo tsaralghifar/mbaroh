@@ -197,7 +197,7 @@
               <ul class="treeview-menu">
                 <li><a href="<?= site_url('laporan/penjualan') ?>"><i class="fa fa-circle-o"></i>Penjualan</a></li>
                 <li><a href="<?= site_url('laporan/reservasi') ?>"><i class="fa fa-circle-o"></i>Booking</a></li>
-                <li><a href="<?= site_url('laporan/pendapatan') ?>"><i class="fa fa-circle-o"></i>Pendapatan</a></li>
+                <li><a href="<?= site_url('laporan/data_pendapatan') ?>"><i class="fa fa-circle-o"></i>Pendapatan</a></li>
               </ul>
             </li>
             <li class="treeview">

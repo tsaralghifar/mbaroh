@@ -18,7 +18,7 @@
     <div class="box-header">
       <h3 class="box-title">Data Pendapatan</h3>
       <div class="pull-right">
-        <a href="<?= site_url('menu/print') ?>" class="btn btn-success btn-flat">
+        <a href="<?= site_url('laporan/print_pendapatan') ?>" class="btn btn-success btn-flat">
           <i class="fa fa-print"></i>Print
         </a>
       </div>

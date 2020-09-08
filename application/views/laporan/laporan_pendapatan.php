@@ -21,7 +21,7 @@
         <a href="<?= site_url('menu/print') ?>" class="btn btn-success btn-flat">
           <i class="fa fa-print"></i>Print
         </a>
-      </div>  
+      </div>
     </div>
 
     <div class="box-body table-responsive">
@@ -29,11 +29,10 @@
         <thead>
           <tr>
             <th>No</th>
-            <th>Tanggal</th>
             <th>Faktur</th>
-            <th>Jenis</th>
+            <th>Tanggal</th>
             <th>Nominal</th>
-            <th>Action</th>
+            <th>Jenis</th>
           </tr>
         </thead>
         <tbody>
@@ -41,75 +40,16 @@
           foreach ($pendapatan as $key => $data) { ?>
             <tr>
               <td><?= $no++ ?></td>
-              <td><?= $data->nama_menu ?></td>
-              <td><?= $data->kategori_menu == 1 ? "Makanan" : "Minuman" ?></td>
-              <td><?= $data->harga ?></td>
-              <td><img src="<?= base_url('uploads/menu/') . $data->gambar; ?> " alt="" height="80"></td>
-              <td class="text-center" width="160px">
-                <?php if($data->gambar != null) { ?>
-                <a href="<?= site_url('menu/edit/' . $data->menu_id) ?>" class="btn btn-primary btn-xs">
-                <?php } ?>
-                  <i class="fa fa-pencil"></i>Edit
-                </a>
-                <a href="<?= site_url('menu/del/' . $data->menu_id) ?>" onclick="return confirm('Ingin Menghapus Data Ini?')" class="btn btn-danger btn-xs">
-                  <i class="fa fa-trash"></i>Hapus
-                </a>
-              </td>
-            </tr>
-          <?php } ?>
+              <td><?= $data->faktur ?></td>
+              <td><?= $data->waktu_transaksi; ?></td>
+              <td><?= $data->total ?></td>
+              <td><?= $data->tipe == 'Penjualan' ? '<span class="label label-warning">Penjualan</span>' : '<span class="label label-success">Reservation</span>' ?></td>
+            <?php } ?>
         </tbody>
       </table>
     </div>
   </div>
-
-  <!-- Default box -->
-  <!-- <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="fa fa-th"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Items</span>
-              <span class="info-box-number">90</span>
-            </div>
-          </div>
-        </div>
-
-          <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-truck"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Suppliers</span>
-              <span class="info-box-number">4</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="clearfix visible-sm-block"></div>
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="fa fa-users"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Costumer</span>
-              <span class="info-box-number">60</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-user-plus"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">User</span>
-              <span class="info-box-number">4</span>
-            </div>
-          </div>
-        </div>
-      </div>
-        
-        <!-- /.box-body -->
-
-  <!-- /.box-footer-->
-  </div> -->
+  <!-- </div> -->
   <!-- /.box -->
 
 </section>

@@ -7,7 +7,7 @@ class Laporan extends CI_Controller {
 	{
 		parent::__construct();
 		check_not_login();
-		$this->load->model('menu_m');
+		    $this->load->model('menu_m');
         $this->load->model('kasir_m');
         $this->load->model('fasilitas_m');
         $this->load->model('laporan_m');

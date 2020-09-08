@@ -14,28 +14,18 @@
 
   <div class="row">
     <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
-      <div class="small-box bg-aqua">
-        <div class="inner">
-          <h3>Penjualan</h3>
-
-          <p>Penjualan Hari Ini</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-bag"></i>
-        </div>
-      </div>
+      
     </div>
   </div>
 
   <div class="row">
-    <div class="col-lg-6 col-xs-6">
+    <div class="col-lg-12 col-xs-6">
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Chart Omset</h3>
+          <h3 class="box-title">Chart Penjualan</h3>
         </div>
         <div class="box-body">
-          <canvas id="chartOmset" height="250"></canvas>
+          <canvas id="chartOmset" height="100"></canvas>
         </div>
       </div>
     </div>

@@ -26,3 +26,30 @@ function fakturAutoID()
     $result = $ci->db->get()->num_rows();
     return $result;
 }
+
+function noBooking($num)
+{
+    $num = $num + 1;
+    switch (strlen($num)) {
+        case 1:
+            $NoTrans = "B" . date('dmy', time()) . "000" . $num;
+            break;
+        case 2:
+            $NoTrans = "B" . date('dmy', time()) . "00" . $num;
+            break;
+        case 3:
+            $NoTrans = "B" . date('dmy', time()) . "0" . $num;
+            break;
+        default:
+            $NoTrans = "B" . date('dmy', time()) . $num;
+    }
+    return $NoTrans;
+}
+
+function bookingAutoID()
+{
+    $ci = &get_instance();
+    $ci->db->from('reservation');
+    $result = $ci->db->get()->num_rows();
+    return $result;
+}

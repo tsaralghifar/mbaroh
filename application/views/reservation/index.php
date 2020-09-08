@@ -28,7 +28,7 @@
       <table class="table table-bordered table-striped" id="table1">
         <thead>
           <tr>
-            <th>No</th>
+            <th>Kode Booking</th>
             <th>Nama</th>
             <th>Phone</th>
             <th>Jumlah Orang</th>
@@ -42,10 +42,10 @@
           </tr>
         </thead>
         <tbody>
-          <?php $no = 1;
+          <?php 
           foreach ($row as $key => $data) { ?>
             <tr>
-              <td><?= $no++ ?></td>
+              <td><?= $data->kode_booking ?></td>
               <td><?php xss($data->nama) ?></td>
               <td><?php xss($data->phone) ?></td>
               <td><?= $data->jumlah_orang ?></td>
@@ -58,14 +58,14 @@
               <td><?= $data->total_k ?></td>
               <td><img src="<?= base_url('uploads/reservation/') . $data->tf; ?> " alt="" height="80"></td>
               <td class="text-center">
-                    <a href="<?= site_url('reservation/print/') . $data->id ?>" class="btn btn-primary btn-xs">
+                    <a href="<?= site_url('reservation/print/') . $data->kode_booking ?>" class="btn btn-primary btn-xs">
                     <i class="fa fa-print"></i>Print
                     </a>
                     <?php if ($data->status_b == 'pending') : ?>
-                    <a href="<?= site_url('reservation/edit/' . $data->id) ?>" class="btn btn-primary btn-xs">
+                    <a href="<?= site_url('reservation/edit/' . $data->kode_booking) ?>" class="btn btn-primary btn-xs">
                     <i class="fa fa-pencil"></i>Edit
                     </a>
-                    <a href="<?= base_url('reservation/check/') . $data->id ?>" class="btn btn-warning btn-xs" id="tombol-baru"><i class="fa fa-check">Proses</i></a>
+                    <a href="<?= base_url('reservation/check/') . $data->kode_booking ?>" class="btn btn-warning btn-xs" id="tombol-baru"><i class="fa fa-check">Proses</i></a>
                     <?php endif; ?> 
               </td>
             </tr>

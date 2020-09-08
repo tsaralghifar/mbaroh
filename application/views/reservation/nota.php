@@ -24,7 +24,7 @@
     
     <table style="width: 100%; font-size: 12pt;">
     <tr>
-    
+    <td>Kode Booking: <?= $header->kode_booking; ?></td>
     </tr>
     
     <tr>

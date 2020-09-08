@@ -32,7 +32,7 @@ class Reservation_m extends CI_Model
     {
         $this->db->set('tag',$param['tag']);
         $this->db->set('status',$param['status']);
-        $this->db->where('id',$id);
+        $this->db->where('kode_booking',$id);
         $this->db->update('reservation', $param);
     }
 
@@ -41,13 +41,13 @@ class Reservation_m extends CI_Model
         if ($param['tf'] == null) {
             $this->db->set('status_bayar', $param['status_bayar']);
             $this->db->set('total_k', $param['total_k']);
-            $this->db->where('id', $param['id']);
+            $this->db->where('kode_booking', $param['kode_booking']);
             $this->db->update('reservation');
         } else {
             $this->db->set('status_bayar', $param['status_bayar']);
             $this->db->set('tf', $param['tf']);
             $this->db->set('total_k', $param['total_k']);
-            $this->db->where('id', $param['id']);
+            $this->db->where('kode_booking', $param['kode_booking']);
 
             $this->db->update('reservation');
         }
@@ -55,19 +55,19 @@ class Reservation_m extends CI_Model
 
     public function reserve($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('kode_booking', $id);
         return $this->db->get('reservation');
     }
 
     public function nota_header($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('kode_booking', $id);
         return $this->db->get('reservation');
     }
 
     public function nota_line($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('kode_booking', $id);
         return $this->db->get('reservation');
     }
 

@@ -26,7 +26,7 @@
       <div class="row">
         <div class="col-md-4 col-md-offset-4">
         <?= $this->session->flashdata('reservation');?>
-          <?php echo form_open_multipart('reservation/edit/' . $data->id); ?>
+          <?php echo form_open_multipart('reservation/edit/' . $data->kode_booking); ?>
           <div class="form-group">
             <label>Status Bayar</label>
             <select name="status_bayar" class="form-control" required>
@@ -45,7 +45,7 @@
                 <div>
                   <img src="<?= base_url('uploads/reservation/' . $data->tf) ?>" style="width:80px">
                 </div>
-            <input type="hidden" name="id" value="<?= $data->id ?>">
+            <input type="hidden" name="id" value="<?= $data->kode_booking ?>">
             <input type="file" name="tf" id="tf" class="form-control">
           </div>
           <div class="form-group">

@@ -41,7 +41,7 @@ class Reservation extends CI_Controller
     public function add()
     {
         $data = [
-            'id'            => null,
+            'kode_booking'	=> noBooking(bookingAutoID()),
             'nama'          => $this->input->post('name'),
             'phone'         => $this->input->post('phone'),
             'jumlah_orang'  => $this->input->post('jumlah_orang'),
@@ -93,7 +93,7 @@ class Reservation extends CI_Controller
 			}
 			if ($image == null) {
 				$param = [
-                    'id'            => $id,
+                    'kode_booking'  => $id,
                     'status_bayar'  => $this->input->post('status_bayar'),   
                     'tf'			=> NULL,
                     'total_k'       => $this->input->post('total_k')
@@ -103,7 +103,7 @@ class Reservation extends CI_Controller
 				redirect('reservation');
 			}else{
 				$param = [
-                    'id'            => $id,
+                    'kode_booking'  => $id,
                     'status_bayar'  => $this->input->post('status_bayar'),   
                     'tf'			=> $image,
                     'total_k'       => $this->input->post('total_k')
@@ -119,7 +119,7 @@ class Reservation extends CI_Controller
     
     public function print($id)
     {
-        $no_faktur = $this->reservation_m->nota_header($id)->row()->id;
+        $no_faktur = $this->reservation_m->nota_header($id)->row()->kode_booking;
 		$data = [
 			'header'	=> $this->reservation_m->nota_header($no_faktur)->row(),
 			'body'		=> $this->reservation_m->nota_line($no_faktur)->result()

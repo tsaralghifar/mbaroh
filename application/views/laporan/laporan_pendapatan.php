@@ -14,7 +14,7 @@
 
   <?php $this->view('messages') ?>
 
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
   <div class="row">
     <div class="col-md-12">
       <div class="box box-widget">
@@ -39,7 +39,7 @@
             </div>
           </form>
         </div>
-=======
+<!-- ======= -->
   <div class="box">
     <div class="box-header">
       <h3 class="box-title">Data Pendapatan</h3>
@@ -47,24 +47,12 @@
         <a href="<?= site_url('laporan/print_pendapatan') ?>" class="btn btn-success btn-flat">
           <i class="fa fa-print"></i>Print
         </a>
->>>>>>> fb57396fb6b9c107662526e1dbb3c34d55dd8706
+<!-- >>>>>>> fb57396fb6b9c107662526e1dbb3c34d55dd8706 -->
       </div>
       <!-- /.card-body -->
       <!-- /.card -->
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box">
-        <div class="box-header">
-          <h3 class="box-title">Data Pendapatan</h3>
-          <div class="pull-right">
-            <a href="<?= site_url('menu/print') ?>" class="btn btn-success btn-flat">
-              <i class="fa fa-print"></i>Print
-            </a>
-          </div>
-        </div>
 
         <div class="box-body table-responsive">
           <table class="table table-bordered table-striped" id="table1">

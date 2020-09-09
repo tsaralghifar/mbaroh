@@ -100,12 +100,19 @@ class Laporan extends CI_Controller
     $this->pdf->load_view('laporan/print_barang_keluar', $data);
   }
 
-  public function print_pendapatan()
+  public function print_pendapatan($tanggal_awal = null, $tanggal_akhir = null)
     {
+      $dataFilter = [
+        'tanggal_awal' => $tanggal_awal == null ? date('Y-m-01', time()) : $tanggal_awal,
+        'tanggal_akhir' => $tanggal_akhir == null ? date('Y-m-d', time()) : $tanggal_akhir,
+      ];
+
         $data = [
-            'body'      => $this->laporan_m->dataPendapatan()->result(),
+            'body'      => $this->laporan_m->dataPendapatan($dataFilter)->result(),
             'title'     => 'Pendapatan'
         ];
+        // var_dump($data);
+        // die;
         $this->load->view('laporan/print_pendapatan', $data);
         
     }
@@ -235,7 +242,7 @@ class Laporan extends CI_Controller
       ));
     }
     $this->laporan_m->generate_barang_masuk($data);
-    redirect('laporan/barang/');
+    redirect('laporan/barang_masuk/');
   }
 
   public function generate_barang_keluar()

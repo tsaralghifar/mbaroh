@@ -226,7 +226,10 @@ class Laporan_m extends CI_Model
         reservation.booking_at <= '" . $dataFilter['tanggal_akhir'] . "'
       AND  
         reservation.total_k > 0";
-
+// var_dump($query);
+// die;
+    // var_dump($this->db->query($query)->result());
+    // die;
     return $this->db->query($query);
   }
 }

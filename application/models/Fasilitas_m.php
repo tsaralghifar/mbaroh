@@ -91,10 +91,11 @@ class Fasilitas_m extends CI_Model
 
     public function track_stock($param, $type = "masuk")
     {
-        if ($param['barang'] - $param['jumlah'] < 0) {
-            return;
+        if ($type == "keluar") {
+            if ($param['barang'] - $param['jumlah'] < 0) {
+                return;
+            }
         }
-
         $data = [
             'id'            => null,
             'id_brg'        => $param['id'],

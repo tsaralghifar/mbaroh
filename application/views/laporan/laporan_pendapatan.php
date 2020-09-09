@@ -44,7 +44,7 @@
     <div class="box-header">
       <h3 class="box-title">Data Pendapatan</h3>
       <div class="pull-right">
-        <a href="<?= site_url('laporan/print_pendapatan') ?>" class="btn btn-success btn-flat">
+        <a target="_blank" href="<?= site_url('laporan/print_pendapatan/'.$this->input->post('tanggal_awal').'/'.$this->input->post('tanggal_akhir')) ?>" class="btn btn-success btn-flat">
           <i class="fa fa-print"></i>Print
         </a>
 <!-- >>>>>>> fb57396fb6b9c107662526e1dbb3c34d55dd8706 -->

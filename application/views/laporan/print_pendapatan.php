@@ -41,22 +41,31 @@
 <th style="text-align: center">No</th>
 <th style="text-align: center">Faktur</th>
 <th style="text-align: center">Tanggal</th>
-<th style="text-align: center">Nominal</th>
 <th style="text-align: center">Jenis Transaksi</th>
+<th style="text-align: center">Nominal</th>
 </tr>
 
 <?php $no = 1;
     $jumlah = 0;
     $count = 0;
 foreach ($body as $bdy) : ?>
+<?php
+
+$jumlah = $jumlah + ($bdy->total);
+
+?>
 <tr>
 <td style="text-align: center"><?= $no++; ?></td>
 <td style="text-align: center"><?= $bdy->faktur; ?></td>
 <td style="text-align: center"><?= $bdy->waktu_transaksi; ?></td>
-<td style="text-align: center"><?= $bdy->total; ?></td>
 <td style="text-align: center"><?= $bdy->tipe; ?></td>
+<td style="text-align: center"><?= $bdy->total; ?></td>
 </tr>
 <?php endforeach; ?>
+<tr>
+    <td colspan ='4' style="text-align: center">Total</td>
+    <td class="text-align: center"><?= rupiah($jumlah); ?></td>
+</tr>
 </tbody>
 
 

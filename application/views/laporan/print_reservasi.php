@@ -43,6 +43,7 @@
 <tbody>
 <tr>
 <th style="text-align: center">No</th>
+<th style="text-align: center">Kode Booking</th>
 <th style="text-align: center">Nama Pelanggan</th>
 <th style="text-align: center">Phone</th>
 <th style="text-align: center">Total</th>
@@ -58,13 +59,14 @@ $jumlah = $jumlah + ($bdy->total_k);
 ?>
 <tr>
 <td style="text-align: center"><?= $no++; ?></td>
+<td><?= $bdy->kode_booking; ?></td>
 <td><?= $bdy->nama; ?></td>
 <td><?= $bdy->phone; ?></td>
 <td><?= $bdy->total_k ?></td>
 </tr>
 <?php endforeach; ?>
 <tr>
-    <td colspan ='3' style="text-align: center">Total Pembayaran</td>
+    <td colspan ='4' style="text-align: center">Total Pembayaran</td>
     <td class="text-align: center"><?= rupiah($jumlah); ?></td>
 </tr>
 </tbody>

@@ -100,6 +100,16 @@ class Laporan extends CI_Controller
     $this->pdf->load_view('laporan/print_barang_keluar', $data);
   }
 
+  public function print_pendapatan()
+    {
+        $data = [
+            'body'      => $this->laporan_m->dataPendapatan()->result(),
+            'title'     => 'Pendapatan'
+        ];
+        $this->load->view('laporan/print_pendapatan', $data);
+        
+    }
+
   public function generate_penjualan()
   {
     $header = [
@@ -156,6 +166,7 @@ class Laporan extends CI_Controller
       array_push($data, array(
         'id'            => null,
         'doc_id'        => $body,
+        'kode_booking'  => $prd->kode_booking,
         'nama'          => $prd->nama,
         'phone'         => $prd->phone,
         'total_k'       => $prd->total_k,
@@ -308,31 +319,6 @@ class Laporan extends CI_Controller
     }
   }
 
-  public function pendapatan()
-  {
-    $data = [
-      'title'     => 'Laporan Reservasi',
-      'reservasi' => $this->laporan_m->get_pendapatan()->result()
-    ];
-
-    $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
-    $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
-
-    if ($this->form_validation->run() == FALSE) {
-      $this->template->load('template', 'laporan/pendapatan', $data);
-    } else {
-      $param = [
-        'tgl_awal'  => $this->input->post('tgl_awal') . ' 00:00:00',
-        'tgl_akhir' => $this->input->post('tgl_akhir') . ' 23:59:59'
-      ];
-      $data = [
-        'title'     => 'Laporan Reservasi',
-        'pendapatan' => $this->laporan_m->filter_pendapatan($param)->result()
-      ];
-      $this->template->load('template', 'laporan/pendapatan', $data);
-    }
-  }
-
   public function barang()
   {
     $data = [
@@ -471,6 +457,7 @@ class Laporan extends CI_Controller
       array_push($data, array(
         'id'            => null,
         'doc_id'        => $body,
+        'kode_booking'  => $prd->kode_booking,
         'nama'          => $prd->nama,
         'phone'         => $prd->phone,
         'total_k'       => $prd->total_k,

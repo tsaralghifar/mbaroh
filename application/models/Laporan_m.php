@@ -196,7 +196,7 @@ class Laporan_m extends CI_Model
     return $this->db->get('laporan_barangkeluar_detail');
   }
 
-  function dataPendapatan()
+  function dataPendapatan($dataFilter)
   {
     $query =
       "SELECT
@@ -206,6 +206,10 @@ class Laporan_m extends CI_Model
         REPLACE(penjualan.faktur, penjualan.faktur, 'Penjualan') AS tipe
       FROM
         penjualan
+      WHERE
+        penjualan.waktu_transaksi >= '" . $dataFilter['tanggal_awal'] . "'
+      AND 
+        penjualan.waktu_transaksi <= '" . $dataFilter['tanggal_akhir'] . "'
       
       UNION ALL
       
@@ -217,6 +221,10 @@ class Laporan_m extends CI_Model
       FROM
         reservation
       WHERE
+        reservation.booking_at >= '" . $dataFilter['tanggal_awal'] . "'
+      AND 
+        reservation.booking_at <= '" . $dataFilter['tanggal_akhir'] . "'
+      AND  
         reservation.total_k > 0";
 
     return $this->db->query($query);

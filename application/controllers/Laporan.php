@@ -464,8 +464,7 @@ class Laporan extends CI_Controller
     $body = $this->laporan_m->getLastID()->row()->id;
 
     $reservasi = $this->reservation_m->filter_reserve($param)->result();
-    // print_r($reservasi);
-    // die;
+
     $data = array();
 
     foreach ($reservasi as $prd) {
@@ -484,8 +483,22 @@ class Laporan extends CI_Controller
 
   public function data_pendapatan()
   {
+    $csrf = $this->input->post('csrf');
+
+    $dataFilter = [
+      'tanggal_awal' => $this->input->post('tanggal_awal') == null ? date('Y-m-01', time()) : $this->input->post('tanggal_awal'),
+      'tanggal_akhir' => $this->input->post('tanggal_akhir') == null ? date('Y-m-d', time()) : $this->input->post('tanggal_akhir'),
+    ];
+
+    if ($this->form_validation->run() == true) {
+      $dataFilter = [
+        'tanggal_awal' => $this->input->post('tanggal_awal'),
+        'tanggal_akhir' => $this->input->post('tanggal_akhir')
+      ];
+    }
+
     $data = [
-      'pendapatan' => $this->laporan_m->dataPendapatan()->result()
+      'pendapatan' => $this->laporan_m->dataPendapatan($dataFilter)->result()
     ];
 
     $this->template->load('template', 'laporan/laporan_pendapatan', $data);

@@ -72,7 +72,7 @@
                   <td><?= $no++ ?></td>
                   <td><?= $data->faktur ?></td>
                   <td><?= $data->waktu_transaksi; ?></td>
-                  <td><?= $data->total ?></td>
+                  <td><?= rupiah($data->total) ?></td>
                   <td><?= $data->tipe == 'Penjualan' ? '<span class="label label-warning">Penjualan</span>' : '<span class="label label-success">Reservation</span>' ?></td>
                 <?php } ?>
             </tbody>

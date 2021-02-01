@@ -14,7 +14,16 @@ class Menu_m extends CI_Model
         return $query;
     }
 
-    public function getMenu()
+    public function getMenu($ket)
+    {
+        $this->db->from('menu');
+        $this->db->where_in('ket', $ket);
+        $this->db->order_by('menu_id DESC');
+        $this->db->limit(6);
+        return $this->db->get();
+    }
+
+    public function getMenus()
     {
         $this->db->from('menu');
         $this->db->order_by('menu_id DESC');
@@ -44,12 +53,14 @@ class Menu_m extends CI_Model
             $this->db->set('nama_menu', $param['nama_menu']);
             $this->db->set('kategori_menu', $param['kategori_menu']);
             $this->db->set('harga', $param['harga']);
+            $this->db->set('ket', $param['ket']);
             $this->db->where('menu_id', $param['menu_id']);
             $this->db->update('menu');
         } else {
             $this->db->set('nama_menu', $param['nama_menu']);
             $this->db->set('kategori_menu', $param['kategori_menu']);
             $this->db->set('harga', $param['harga']);
+            $this->db->set('ket', $param['ket']);
             $this->db->set('gambar', $param['gambar']);
             $this->db->where('menu_id', $param['menu_id']);
             $this->db->update('menu');

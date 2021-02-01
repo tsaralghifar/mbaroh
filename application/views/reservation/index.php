@@ -58,7 +58,7 @@
               <td><?= $data->total_k ?></td>
               <td><img src="<?= base_url('uploads/reservation/') . $data->tf; ?> " alt="" height="80"></td>
               <td class="text-center">
-                    <a href="<?= site_url('reservation/print/') . $data->kode_booking ?>" class="btn btn-primary btn-xs">
+                    <a href="<?= site_url('reservation/print/') . $data->kode_booking ?>" class="<?= empty($data->total_k) ? "hidden" : "" ?> btn btn-primary btn-xs">
                     <i class="fa fa-print"></i>Print
                     </a>
                     <?php if ($data->status_b == 'pending') : ?>

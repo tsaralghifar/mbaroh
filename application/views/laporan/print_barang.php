@@ -32,7 +32,7 @@
 
 <tr>
 <td><strong>Kopi M'Baroh</strong></td>
-<td>Alamat: <strong>JL. INDRAKILA KAMPUNG TIMUR NO 22 BALIKPAPAN</strong></td>
+<td>Alamat: <strong>JL. Sukamara, Landasan Ulin</strong></td>
 </tr>
 </table>
 

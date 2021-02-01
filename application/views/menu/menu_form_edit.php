@@ -45,6 +45,14 @@
             <input type="number" name="harga" class="form-control" required value="<?= $row->harga; ?>">
           </div>
           <div class="form-group">
+            <label>Keterangan</label>
+            <select name="ket" class="form-control" required>
+              <option value="">-Pilih-</option>
+              <option value="1" <?= $row->ket == "1" ? 'selected' : '' ?>>-Ada-</option>
+              <option value="2" <?= $row->ket == "2" ? 'selected' : '' ?>>-Kosong-</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label>Gambar</label>
                 <div>
                   <img src="<?= base_url('uploads/menu/' . $row->gambar) ?>" style="width:80px">

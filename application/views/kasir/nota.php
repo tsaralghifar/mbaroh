@@ -34,7 +34,7 @@
     
     <tr>
     <td>KOPI M'BAROH</td>
-    <td style="text-align: right;">JL. KEBENARAN</td>
+    <td style="text-align: right;">JL. Sukamara, Landasan Ulin</td>
     </tr>
     </table>
     <br>

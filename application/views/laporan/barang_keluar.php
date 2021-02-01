@@ -58,7 +58,7 @@
                         </div>
                         <!-- Button trigger modal -->
                         <div class="pull-left">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#printModal">Print</button>
+                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#printModal">Print</button> -->
                         </div>
                         <!-- Modal -->
                         <div class="modal fade" id="printModal" tabindex="-1" role="dialog" aria-labelledby="printLabel" aria-hidden="true">

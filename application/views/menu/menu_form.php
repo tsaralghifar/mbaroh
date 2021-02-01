@@ -43,6 +43,14 @@
             <input type="number" name="harga" class="form-control" required>
           </div>
           <div class="form-group">
+            <label>Keterangan</label>
+            <select name="ket" class="form-control" required>
+              <option value="">-Pilih-</option>
+              <option value="1">-Ada-</option>
+              <option value="2">-Habis-</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label>Gambar</label>
                 <!-- <div>
                   <img src="<?= base_url('uploads/menu/' . $row->gambar) ?>" style="width:80px">

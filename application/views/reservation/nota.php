@@ -33,7 +33,7 @@
     
     <tr>
     <td>KOPI M'BAROH</td>
-    <td style="text-align: right;">JL. KEBENARAN</td>
+    <td style="text-align: right;">JL. Sukamara, Landasan Ulin</td>
     </tr>
     </table>
     <br>
@@ -55,6 +55,32 @@
     <td style="text-align: center; "><?= $bdy->nama ?></td>
     <td style="text-align: center;"><?= $bdy->jumlah_orang ?></td>
     <td style="text-align: center; "><?= $bdy->booking_at; ?></td>
+    <!-- <td style="text-align: right; "><?= rupiah($key->harga * $key->sold_qty); ?></td> -->
+    </tr>
+    <?php endforeach; ?>
+    
+    </tbody>
+    
+    </table>
+    <table class="change_order_items" style="font-size: 15pt; border: 1px dotted; width: 100%;">
+    
+    
+    <tbody>
+    <tr>
+    <th style="border-bottom: 1px dotted;">No</th>
+    <th style="border-bottom: 1px dotted;">Menu</th style="border-bottom: 1px dotted;">
+    <th style="border-bottom: 1px dotted;">Jumlah</th style="border-bottom: 1px dotted;">
+    <th style="border-bottom: 1px dotted;">Harga</th style="border-bottom: 1px dotted;">
+    <!-- <th style="border-bottom: 1px dotted;">Total</th style="border-bottom: 1px dotted;"> -->
+    </tr>
+    
+    <?php $no = 1;
+    foreach ($makanan as $key) : ?>
+    <tr class="even_row">
+    <td style="text-align: center; "><?= $no++; ?></td>
+    <td style=""><?= $key->nama_menu; ?></td>
+    <td style="text-align: center; "><?= $key->sold_qty; ?></td>
+    <td style="text-align: right; "><?= rupiah($key->harga); ?></td>
     <!-- <td style="text-align: right; "><?= rupiah($key->harga * $key->sold_qty); ?></td> -->
     </tr>
     <?php endforeach; ?>

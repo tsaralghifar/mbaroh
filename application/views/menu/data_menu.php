@@ -34,7 +34,8 @@
             <th>No</th>
             <th>Nama Menu</th>
             <th>Kategori</th>
-            <th>harga</th>
+            <th>Harga</th>
+            <th>Keterangan</th>
             <th>Gambar</th>
             <th>Action</th>
           </tr>
@@ -47,6 +48,7 @@
               <td><?= $data->nama_menu ?></td>
               <td><?= $data->kategori_menu == 1 ? "Makanan" : "Minuman" ?></td>
               <td><?= $data->harga ?></td>
+              <td><?= $data->ket == 1 ? "Ada" : "Ksong" ?></td>
               <td><img src="<?= base_url('uploads/menu/') . $data->gambar; ?> " alt="" height="80"></td>
               <td class="text-center" width="160px">
                 <?php if($data->gambar != null) { ?>

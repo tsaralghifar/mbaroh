@@ -8,6 +8,8 @@ class Reservation extends CI_Controller
         parent::__construct();
         
         $this->load->model('reservation_m');
+        $this->load->model('menu_m');
+        $this->load->model('kasir_m');
         $this->load->helper('plugin_helper');
         $this->load->helper('faktur_helper');
     }
@@ -15,7 +17,9 @@ class Reservation extends CI_Controller
     public function index()
     {
         check_not_login();
-        $data['row'] = $this->reservation_m->get()->result();
+        $data = [
+            'row'       => $this->reservation_m->get()->result()
+        ];
         $this->template->load('template','reservation/index', $data);       
     }
 
@@ -48,10 +52,24 @@ class Reservation extends CI_Controller
             'status'        => 1,
             'booking_at'    => date('Y-m-d H:i:s', time()),
             'tgl_h'         => $this->input->post('tgl_h'),
-            'status_bayar'  => 1
+            'status_bayar'  => 1,
+            'total'         => $this->reservation_m->grandTotal()
         ];
         $this->reservation_m->booking($data);
+        $this->reservation_m->addDetail($this->reservation_m->last_row()->kode_booking);
         redirect(base_url());
+    }
+
+    public function booking()
+    {
+        $ket = 1;
+        $data = [
+            'booking'       => $this->menu_m->getMenu($ket)->result(),
+            'dataFromCart'	=> $this->reservation_m->get_cart()->result(),
+            'grand_total'	=> $this->reservation_m->grandTotal()
+        ];
+        $this->load->view('book_form', $data);
+        
     }
 
     public function edit($id){
@@ -122,7 +140,8 @@ class Reservation extends CI_Controller
         $no_faktur = $this->reservation_m->nota_header($id)->row()->kode_booking;
 		$data = [
 			'header'	=> $this->reservation_m->nota_header($no_faktur)->row(),
-			'body'		=> $this->reservation_m->nota_line($no_faktur)->result()
+            'body'		=> $this->reservation_m->nota_line($no_faktur)->result(),
+            'makanan'	=> $this->reservation_m->makanan_line($no_faktur)->result()
 		];
 		$this->load->view('reservation/nota',$data);
     }
@@ -135,6 +154,40 @@ class Reservation extends CI_Controller
         ];
         $this->load->view('reservation/print', $data);
         
+    }
+
+    public function addtocart()
+	{
+		$param = [
+			'id'            => null,
+			'menu_id'       => $this->input->post('product'),
+			'qty'           => $this->input->post('qty')
+		];
+		$this->reservation_m->addtocart($param);
+		
+		$getCartDetail = $this->reservation_m->get_cart($param['menu_id'])->row();
+
+		$cart = [
+			'id'			=> null,
+			'cart_id'		=> $getCartDetail->id,
+			'subtotal'		=> $getCartDetail->harga * $getCartDetail->qty
+		];
+		// var_dump($param, $getCartDetail, $cart);
+		// die;
+		$this->reservation_m->addtocartdetail($cart);
+		redirect('reservation/booking');
+    }
+    
+    public function hapus($id)
+	{
+		$this->reservation_m->hapus($id);
+		redirect('reservation/booking');
+    }
+    
+    public function clear()
+    {
+        $this->reservation_m->clear();
+        redirect('home/');
     }
 
 }

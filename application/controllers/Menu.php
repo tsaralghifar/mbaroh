@@ -23,6 +23,7 @@ class Menu extends CI_Controller
 		$menu->nama_menu = null;
 		$menu->kategori_menu = null;
 		$menu->harga = null;
+		$menu->ket = null;
 		$menu->gambar = null;
 		$data = [
 			'page' => 'add',
@@ -67,6 +68,7 @@ class Menu extends CI_Controller
 					'nama_menu'			=> $this->input->post('nama_menu'),
 					'kategori_menu'		=> $this->input->post('kategori_menu'),
 					'harga'				=> $this->input->post('harga'),
+					'ket'				=> $this->input->post('ket'),
 					'gambar'			=> $image
 				];
 				$this->menu_m->add($param);
@@ -140,6 +142,7 @@ class Menu extends CI_Controller
 					'nama_menu'			=> $this->input->post('nama_menu'),
 					'kategori_menu'		=> $this->input->post('kategori_menu'),
 					'harga'				=> $this->input->post('harga'),
+					'ket'				=> $this->input->post('ket'),
 					'gambar'			=> $image 
 					];
 					$this->menu_m->edit($param);
@@ -155,8 +158,9 @@ class Menu extends CI_Controller
 
 	public function print()
     {
+		$ket = 1;
         $data = [
-            'body'      => $this->menu_m->get()->result(),
+            'body'      => $this->menu_m->getMenu($ket)->result(),
             'title'     => 'Daftar Menu'
         ];
         $this->load->view('menu/menuprint', $data);

@@ -28,7 +28,7 @@
 
 <tr>
 <td><strong>Kopi M'Baroh</strong></td>
-<td>Alamat: <strong>JL. Kebenaran</strong></td>
+<td>Alamat: <strong>JL. Sukamara, Landasan Ulin</strong></td>
 </tr>
 </table>
 

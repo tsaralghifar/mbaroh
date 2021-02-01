@@ -7,8 +7,7 @@ class Home extends CI_Controller
     {
         $this->load->model('menu_m');
         $this->load->model('event_m');
-        $data['menu'] = $this->menu_m->getMenu()->result();
-        $data['event'] = $this->event_m->getMenu()->result();
+        $data['menu'] = $this->menu_m->getMenus()->result();
         // var_dump($data['menu']);
         // die;
         $this->load->view('home', $data);

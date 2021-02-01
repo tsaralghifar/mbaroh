@@ -136,11 +136,6 @@
               <td><?= $data->unit ?></td>
               <td><img src="<?= base_url('uploads/fasilitas/') . $data->foto_barang; ?> " alt="" height="80"></td>
               <td class="text-center" width="160px">
-                <?php if($data->foto_barang != null) { ?>
-                <a href="<?= site_url('fasilitas/edit/' . $data->id) ?>" class="btn btn-primary btn-xs">
-                <?php } ?>
-                  <i class="fa fa-pencil"></i>Edit
-                </a>
                 <a href="<?= site_url('fasilitas/del/' . $data->id) ?>" onclick="return confirm('Ingin Menghapus Data Ini?')" class="btn btn-danger btn-xs">
                   <i class="fa fa-trash"></i>Hapus
                 </a>

@@ -15,8 +15,9 @@ class Kasir extends CI_Controller {
 	
 	public function index()
 	{
+		$ket = 1;
 		$data = [
-			'menu' 			=> $this->menu_m->get()->result(),
+			'menu' 			=> $this->menu_m->getMenu($ket)->result(),
 			'dataFromCart'	=> $this->kasir_m->get()->result(),
 			'grand_total'	=> $this->kasir_m->grandTotal()
 		];
@@ -62,6 +63,8 @@ class Kasir extends CI_Controller {
 			'waktu_transaksi'	=> date('Y-m-d H::s' , time())
 		];
 
+		
+
 		if($this->kasir_m->grandTotal() <= 0) {
 			redirect('kasir/');
 		}else{
@@ -70,9 +73,14 @@ class Kasir extends CI_Controller {
 			$this->kasir_m->proses($data);
 			$this->kasir_m->addDetail($this->kasir_m->last_row()->faktur);
 			// $this->kasir_m->clear();
+			if ($data['bayar'] < $data['total']) {
+				echo "<script>alert('Data Tidak Bisa Di Proses');</script>";
+				echo "<script>window.location='".site_url('kasir/')."';</script>";
+			}else{
 			$cashback = $this->kasir_m->last_row()->cashback;
 			if($cashback == 0) {
 				redirect('kasir/print/' . $data['faktur']);
+			}
 			}
 		}
 	}

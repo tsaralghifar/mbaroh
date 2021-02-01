@@ -46,9 +46,9 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="<?=site_url('auth/login')?>">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Booking/Reservation</a>
-                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#res">Booking/Reservation</a>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#book">Feedback</a>
                     </li>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-lg-8 align-self-baseline">
                     <p class="text-white-75 font-weight-light mb-5"></p>
-                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="<?=site_url('feedback/feedy') ?>">Find Out More</a>
+                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="#">Find Out More</a>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
                     <h2 class="text-white mt-0">We've got what you need!</h2>
                     <hr class="divider light my-4">
                     <p class="text-white-50 mb-4">Sebuah Cafe Bernuansa Klasik & Menyuguhkan Kopi dan Hidangan yang Nikmat</p>
-                    <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+                    <a class="btn btn-light btn-xl js-scroll-trigger" href="<?=base_url('reservation/booking') ?>">Book Now!</a>
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@
         </div>
     </section>
 
-   <!-- Booking -->
+   <!-- Booking
    <section class="page-section" id="contact">
         <div class="container">
             <div class="row justify-content-center">
@@ -194,7 +194,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Feedback -->
    <section class="page-section bg-dark text-white" id="book">
